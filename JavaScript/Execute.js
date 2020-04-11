@@ -15,6 +15,8 @@ $(document).ready(function () {
 
   }
 
+  //
+
   //=========================
   //Declare the DOM variables
   //=========================
