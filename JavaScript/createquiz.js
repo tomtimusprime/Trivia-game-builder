@@ -1,28 +1,46 @@
 // $().click(function({}));
+// $(document).ready(function() {
+//   $('select').material_select();
+// });
+$('select').material_select();
+// $('.sidenav').sidenav();
+// (function($){
+//  $(function(){
+
+//    $('.sidenav').sidenav();
+//    // $('.parallax').parallax();
+
+//  }); 
+// })(jQuery); 
+
+
 localStorage.removeItem("questions");
 $("#apiButton").on("click", function () {
   console.log("coool");
   let queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=VYV7WuUWYvqBEkmL3ntG5ElTynntIv4e";
   let quizApi = "https://opentdb.com/api.php?";
-  let apiNumber = $("#apiNumber").val();
-  let checkNumber = $("#apiNumber").val();
-  if(checkNumber === ""){
-    checkNumber = 1;
-  }
-  checkNumber = parseInt(checkNumber);
-  if (apiNumber === "") {
-    apiNumber = 1;
-  }
-  apiNumber = "amount=" + apiNumber;
-  let apiCategory = $("#apiCategory").val();
-  if (apiCategory === "") {
-    apiCategory = 10;
-  }
-  console.log(apiCategory);
-  apiCategory = "&category=" + apiCategory;
+  // let apiNumber = $("#apiNumber").val();
+  // let checkNumber = $("#apiNumber").val();
+  // console.log(checkNumber);
+  // if(checkNumber === ""){
+  //   checkNumber = 1;
+  // }
+  // checkNumber = parseInt(checkNumber);
+  // if (apiNumber === "") {
+  //   apiNumber = 1;
+  // }
+  // apiNumber = "amount=" + apiNumber;
+  // let apiCategory = $("#apiCategory").val();
+  // if (apiCategory === "") {
+  //   apiCategory = 10;
+  // }
+  // console.log(apiCategory);
+  // apiCategory = "&category=" + apiCategory;
 
   $.ajax({
-    url: quizApi + apiNumber + apiCategory,
+    url: "https://opentdb.com/api.php?amount=10",
+    // quizApi + apiNumber, 
+    // + apiCategory,
     method: "GET"
   }).then(function (response) {
     // Checking the JSON object recieved from the "Open Trivia Database" API
@@ -36,7 +54,7 @@ $("#apiButton").on("click", function () {
     if (questions === null) {
       questions = [];
     }
-
+    let checkNumber = 10;
     let addedCheck = questions.length + checkNumber
     if (questions.length < 20 && addedCheck < 21) {
       let inquiry;
@@ -105,6 +123,7 @@ $("#apiButton").on("click", function () {
       }
       //  appending questions to HTML
       $("#demo").empty();
+      console.log(questions);
       for (let i = 0; i < questions.length; i++) {
         console.log(i);
         let eleD = $("<div>");
