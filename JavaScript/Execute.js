@@ -203,6 +203,7 @@ $(document).ready(function () {
 
 //1. Get data from local storage - so I need to load Schwynn's version and get that data so I know how to manipulate it.
 //2. Once I have that in an array of objects, I can then manipulate and generate the question cards.
+//3. add timer option on the actual execute page.
 
 
 //We still need to use Giphy
