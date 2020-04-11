@@ -318,6 +318,27 @@ $("#mClear").on("click",function(){
   $("#mOption4").val("");
 });
 
+let lastPassword = localStorage.getItem("lastPassword");
+lastPassword = JSON.parse(lastPassword);
+if (lastPassword === null){
+  lastPassword = [];
+}
+$("#next").on("click",function(){
+  let x = $("#pword").val();
+  console.log(x);
+  console.log(lastPassword);
+  let len = lastPassword.length;
+  lastPassword[len] = x;
+  json = JSON.stringify(lastPassword);
+  localStorage.setItem("lastPassword",json);
+  questions = localStorage.getItem("questions")
+  questions = JSON.parse(questions);
+  json = JSON.stringify(questions);
+  localStorage.setItem(x,json);
+  window.location.href = "./print.html";
+  
+})
+
 $("#bClear").on("click",function(){
   $("#bQuestion").val("");
   $("#bAnswer").val("");

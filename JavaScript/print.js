@@ -7,7 +7,7 @@ $("#cSubmit").on("click", function () {
     if (questions !== null) {
         console.log(questions);
         $("ol").empty();
-        $("#printOption").html("Print Options: " + "<span style=\"color:green\">"+ code + "</span>");
+        $("#printOption").html("Print Options: " + "<span style=\"color:green\">" + code + "</span>");
     } else {
         $("ol").empty();
         $("#printOption").text("Print Options: ");
@@ -134,4 +134,11 @@ $("#lSubmit").on("click", function () {
         }, 5000);
     }
 
+
 });
+
+$("#titleButton").on("click", function () {
+    let text = $("#titleVal").val();
+    console.log(text);
+    $("#listTitle").text(text);
+})
