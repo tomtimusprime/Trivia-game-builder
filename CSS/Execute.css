@@ -46,4 +46,39 @@
    }
  }
  
+ #timer {
+  color: black;
+ }
  
+ .hide {
+   display: none;
+ }
+
+ .spacer {
+   height: 100px;
+ }
+
+ .card-body {
+  box-shadow: 0 0 10px 2px;
+}
+
+.button-effects {
+  padding: 10px;
+  margin: 10px;
+  
+}
+.btn-grid {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 10px;
+  margin: 20px 0;
+}
+.button-effects:hover {
+  border: solid black 1px;
+}
+.btn.correct {
+  background-color:#218838;
+}
+.btn.wrong {
+  background-color: #C82333;
+}
