@@ -1,4 +1,19 @@
 // $().click(function({}));
+// $(document).ready(function() {
+//   $('select').material_select();
+// });
+$('select').material_select();
+// $('.sidenav').sidenav();
+// (function($){
+//  $(function(){
+
+//    $('.sidenav').sidenav();
+//    // $('.parallax').parallax();
+
+//  }); 
+// })(jQuery); 
+
+
 localStorage.removeItem("questions");
 $("#apiButton").on("click", function () {
   console.log("coool");
@@ -6,6 +21,7 @@ $("#apiButton").on("click", function () {
   let quizApi = "https://opentdb.com/api.php?";
   let apiNumber = $("#apiNumber").val();
   let checkNumber = $("#apiNumber").val();
+  console.log(checkNumber);
   if(checkNumber === ""){
     checkNumber = 1;
   }
@@ -22,7 +38,9 @@ $("#apiButton").on("click", function () {
   apiCategory = "&category=" + apiCategory;
 
   $.ajax({
-    url: quizApi + apiNumber + apiCategory,
+    url: "https://opentdb.com/api.php?amount=10",
+    // quizApi + apiNumber, 
+    // + apiCategory,
     method: "GET"
   }).then(function (response) {
     // Checking the JSON object recieved from the "Open Trivia Database" API

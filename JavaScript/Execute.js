@@ -205,6 +205,8 @@ $(document).ready(function () {
 //2. Once I have that in an array of objects, I can then manipulate and generate the question cards.
 //3. add timer option on the actual execute page.
 
+//For future updates - add additional categories
+
 
 //We still need to use Giphy
 

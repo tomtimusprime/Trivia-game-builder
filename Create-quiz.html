@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
     <link href="./CSS/create-quiz-styles.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
     </script>
 
@@ -33,9 +34,11 @@
         <h2 class="center">Make your Selections Below!</h2>
         <div class="row">
             <div class="col s1 m4">
-                <label>Number of qustions</label>
-                <select>
-                    <option id="apiNumber" type="text" placeholder="Number of Questions" Disabled selected>Select number
+                <!-- API generator -->
+                <form>
+                <label>Number of questions</label>
+                <select id="apiNumber"> 
+                    <option type="text" placeholder="Number of Questions" Disabled selected>Select number
                         of questions</option>
                     <option value="5">5</option>
                     <option value="10">10</option>
@@ -44,17 +47,20 @@
                 </select>
             </div>
             <div class="col s1 m4">
+                <!-- Category Section -->
                 <label>Category</label>
                 <select>
                     <option id="apiCategory" type="text" placeholder="Category" disabled selected>Select Category
                     </option>
-                    <option value="1">Math</option>
-                    <option value="2">Science</option>
-                    <option value="3">Animals</option>
-                    <option value="4">History</option>
-                    <option value="5">Random</option>
+                    <option value="21">Sports</option>
+                    <option value="9">General Knowledge</option>
+                    <option value="27">Animals</option>
+                    <option value="23">History</option>
+                    <option value="18">Science: Computers</option>
+                    <option value="">Any Category</option>
                 </select>
             </div>
+            <!-- Difficulty Selector -->
             <div class="col s1 m4">
                 <label>Difficulty</label>
                 <select>
@@ -63,10 +69,11 @@
                     <option value="1">Easy</option>
                     <option value="2">Medium</option>
                     <option value="3">Hard</option>
-                    <option value="3">Genius!</option>
                 </select>
             </div>
+            <a class="waves-effect waves-light btn-large" id="apiButton">Submit</a>
         </div>
+        <!-- Create your own Multiple Choice Questions -->
         <div class="row">
             <h4>Create your own Trivia Questions!</h4>
             <br>
@@ -167,9 +174,9 @@
         </div>
     </footer>
 
-    <script src="./JavaScript/create-quiz.js"></script>
-    <script src="./schwyn.js"></script>
-    <script src="./Schwyn-2.js"></script>
+    <script src="./JavaScript/createquiz.js"></script>
+    <!-- <script src="./schwyn.js"></script>
+    <script src="./Schwyn-2.js"></script> -->
     <!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
 
 
