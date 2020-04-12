@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width = device-width, initial-scale = 1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
     <link href="./CSS/create-quiz-styles.css" type="text/css" rel="stylesheet" media="screen,projection" />
@@ -37,11 +38,13 @@
                 <div class="col s1 m4 border">
                     <!-- API generator -->
                     <input id="pword" type="text" placeholder="code"><br><button id="next">next</button><br>
-                    <form>
+                    <p id="lastCheck" style="color: red;"></p>
+                    <form id="form">
                         <h4>Trivia Generator</h4>
                         <select id="apiNumber">
                             <option type="text" placeholder="Number of Questions" Disabled selected># of Questions
                             </option>
+                            <option value="1">1</option>
                             <option value="5">5</option>
                             <option value="10">10</option>
                             <option value="15">15</option>
@@ -49,8 +52,8 @@
                         </select>
                         <!-- Category Section -->
                         <label>Category</label>
-                        <select>
-                            <option id="apiCategory" type="text" placeholder="Category" disabled selected>Select
+                        <select id="apiCategory">
+                            <option type="text" placeholder="Category" disabled selected>Select
                                 Category
                             </option>
                             <option value="21">Sports</option>
@@ -62,16 +65,17 @@
                         </select>
                         <!-- Difficulty Selector -->
                         <label>Difficulty</label>
-                        <select>
-                            <option id="apiDifficulty" type="text" placeholder="Difficulty" disabled selected>Select
+                        <select id="apiDifficulty">
+                            <option type="text" placeholder="Difficulty" disabled selected>Select
                                 Difficulty
                             </option>
-                            <option value="1">Easy</option>
-                            <option value="2">Medium</option>
-                            <option value="3">Hard</option>
+                            <option value="easy">Medium</option>
+                            <option value="medium">Hard</option>
+                            <option value="hard">Genius</option>
                         </select>
                         <p id="apiError" style="color: red;"></p>
                         <a class="waves-effect waves-light btn-large" id="apiButton">Submit</a>
+                        <!-- <i class="fa fa-spinner fa-spin" style="font-size:24px"></i> -->
                     </form>
                 </div>
                 <div class="col s1 m4 border">
@@ -96,19 +100,20 @@
                 </div>
                 <div class="row">
                     <div class="col s1 m4">
-                        <input id="deleteInput" type="text" placeholder="number"><button id="deleteButton">Delete</button>
+                        <input id="deleteInput" type="text" placeholder="number"><button
+                            id="deleteButton">Delete</button>
                     </div>
                     <div class="col s1 m4">
                         <input id="sort1" type="text" placeholder="number"><input id="sort2" type="text"
                             placeholder="number"><button class="sortB">Sort</button>
                     </div>
 
-            </div>
-            
+                </div>
+
                 <p id="demo"></p>
             </div>
         </div>
         <script src="./JavaScript/createquiz.js"></script>
     </body>
-    
+
 </html>
