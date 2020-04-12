@@ -1,48 +1,46 @@
-// $().click(function({}));
-// $(document).ready(function() {
-//   $('select').material_select();
-// });
+// material jquery
 $('select').material_select();
-// $('.sidenav').sidenav();
-// (function($){
-//  $(function(){
 
-//    $('.sidenav').sidenav();
-//    // $('.parallax').parallax();
-
-//  }); 
-// })(jQuery); 
-
-
+// removing local storage key to be used again
 localStorage.removeItem("questions");
 $("#apiButton").on("click", function () {
-  console.log("coool");
+
+  let eleI = $("<i>");
+  eleI.addClass("fa fa-spinner fa-spin");
+  eleI.css("font-size", "24px");
+  $("#form").append(eleI);
+
+  // apiNumber
+  let apiNum = $("#apiNumber").val();
+  if (apiNum === null) {
+    apiNum = 1;
+  }
+  apiNum = "amount=" + apiNum;
+  // apiCategory
+  let apiCat = $("#apiCategory").val();
+  if (apiCat === null) {
+    apiCat = "";
+  } else {
+    apiCat = "&category=" + apiCat;
+  }
+  // apiDificulty
+  let apiDif = $("#apiDifficulty").val();
+  if (apiDif === null) {
+    apiDif = "easy"
+  }
+  apiDif = "&difficulty=" + apiDif;
+
+  console.log(apiDif);
+  console.log(apiCat);
+  console.log(apiNum);
+
   let queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=VYV7WuUWYvqBEkmL3ntG5ElTynntIv4e";
   let quizApi = "https://opentdb.com/api.php?";
-  // let apiNumber = $("#apiNumber").val();
-  // let checkNumber = $("#apiNumber").val();
-  // console.log(checkNumber);
-  // if(checkNumber === ""){
-  //   checkNumber = 1;
-  // }
-  // checkNumber = parseInt(checkNumber);
-  // if (apiNumber === "") {
-  //   apiNumber = 1;
-  // }
-  // apiNumber = "amount=" + apiNumber;
-  // let apiCategory = $("#apiCategory").val();
-  // if (apiCategory === "") {
-  //   apiCategory = 10;
-  // }
-  // console.log(apiCategory);
-  // apiCategory = "&category=" + apiCategory;
-
   $.ajax({
-    url: "https://opentdb.com/api.php?amount=10",
-    // quizApi + apiNumber, 
-    // + apiCategory,
+    url: quizApi + apiNum + apiCat + apiDif,
     method: "GET"
   }).then(function (response) {
+    $("i").remove();
     // Checking the JSON object recieved from the "Open Trivia Database" API
     console.log(response);
     console.log(response.results[0].question);
@@ -54,8 +52,15 @@ $("#apiButton").on("click", function () {
     if (questions === null) {
       questions = [];
     }
-    let checkNumber = 10;
-    let addedCheck = questions.length + checkNumber
+
+    // limiting the length to 20 so they purchase premium lol
+    let checkNumber = $("#apiNumber").val();
+    if(checkNumber === null){
+      checkNumber = 1;
+    }
+    console.log(checkNumber);
+    checkNumber = parseInt(checkNumber);
+    let addedCheck = questions.length + checkNumber;
     if (questions.length < 20 && addedCheck < 21) {
       let inquiry;
       let wrongAnswers;
@@ -66,8 +71,6 @@ $("#apiButton").on("click", function () {
         inquiry = response.results[q].question;
         wrongAnswers = response.results[q].incorrect_answers;
         rightAnswer = response.results[q].correct_answer;
-        // let text = "What does the &quot;MP&quot; stand for in MP3?";
-        // console.log(inquiry);
 
         // editing the question syntax
         text = inquiry.split("");
@@ -137,7 +140,7 @@ $("#apiButton").on("click", function () {
       let json = JSON.stringify(questions);
       console.log(json);
       localStorage.setItem("questions", json);
-    }else{
+    } else {
       $("#apiError").show();
       $("#apiError").text("Sorry! No more than 20. Delete to add more.");
       $("#apiError").hide(5000);
@@ -155,18 +158,20 @@ $("#deleteButton").on("click", function () {
   let deletePick = $("#deleteInput").val();
   deletePick = parseInt(deletePick);
   deletePick = deletePick - 1;
-  console.log("delete" + deletePick);
-  questions.splice(deletePick, 1);
-  json = JSON.stringify(questions);
-  localStorage.setItem("questions", json);
-  console.log(deletePick);
-  $("#demo").empty();
-  for (let i = 0; i < questions.length; i++) {
-    let eleD = $("<div>");
-    let eleQ = $("<p>");
-    eleQ.html((i + 1) + ") " + questions[i].q + "<br>" + "<br>" + questions[i].o[0] + "<br>" + questions[i].o[1] + "<br>" + questions[i].o[2] + "<br>" + questions[i].o[3]);
-    eleD.append(eleQ);
-    $("#demo").append(eleD);
+  if (deletePick <= questions.length && deletePick >= 0 && typeof deletePick === "number") {
+    console.log("delete" + deletePick);
+    questions.splice(deletePick, 1);
+    json = JSON.stringify(questions);
+    localStorage.setItem("questions", json);
+    console.log(deletePick);
+    $("#demo").empty();
+    for (let i = 0; i < questions.length; i++) {
+      let eleD = $("<div>");
+      let eleQ = $("<p>");
+      eleQ.html((i + 1) + ") " + questions[i].q + "<br>" + "<br>" + questions[i].o[0] + "<br>" + questions[i].o[1] + "<br>" + questions[i].o[2] + "<br>" + questions[i].o[3]);
+      eleD.append(eleQ);
+      $("#demo").append(eleD);
+    }
   }
 
 })
@@ -182,10 +187,10 @@ $(".sortB").on("click", function () {
   let sort2 = $("#sort2").val();
   sort2 = parseInt(sort2);
   sort2 = sort2 - 1;
-  if(questions[sort1] !== undefined && questions[sort2] !== undefined){
+  if (questions[sort1] !== undefined && questions[sort2] !== undefined) {
     console.log(sort1);
     console.log(sort2);
-  
+
     let temp = questions[sort1];
     questions[sort1] = questions[sort2];
     questions[sort2] = temp;
@@ -199,9 +204,9 @@ $(".sortB").on("click", function () {
       eleD.append(eleQ);
       $("#demo").append(eleD);
     }
-  
+
   }
-  
+
 
 });
 
@@ -241,17 +246,17 @@ $("#mButton").on("click", function () {
           eleD.append(eleQ);
           $("#demo").append(eleD);
         }
-      }else{
+      } else {
         $("#multipleError").show();
         $("#multipleError").text("Sorry! No more than 20. Delete to add more.");
         $("#multipleError").hide(5000);
       }
-    }else{
+    } else {
       $("#multipleError").show();
       $("#multipleError").text("Please match answer to an option.");
       $("#multipleError").hide(5000);
     }
-  }else{
+  } else {
     $("#multipleError").show();
     $("#multipleError").text("A value can not be left blank.");
     $("#multipleError").hide(5000);
@@ -294,13 +299,13 @@ $("#bButton").on("click", function () {
           eleD.append(eleQ);
           $("#demo").append(eleD);
         }
-      }else{
+      } else {
         $("#booleanError").show();
         $("#booleanError").text("Sorry! No more than 20. Delete to add more.");
         $("#booleanError").hide(5000);
       }
 
-    }else{
+    } else {
       $("#booleanError").show();
       $("#booleanError").text("Sorry! Anwer must be True or False.");
       $("#booleanError").hide(5000);
@@ -309,7 +314,7 @@ $("#bButton").on("click", function () {
 
 });
 
-$("#mClear").on("click",function(){
+$("#mClear").on("click", function () {
   $("#mQuestion").val("");
   $("#mAnswer").val("");
   $("#mOption1").val("");
@@ -320,31 +325,46 @@ $("#mClear").on("click",function(){
 
 let lastPassword = localStorage.getItem("lastPassword");
 lastPassword = JSON.parse(lastPassword);
-if (lastPassword === null){
+if (lastPassword === null) {
   lastPassword = [];
 }
-$("#next").on("click",function(){
+let a = 0;
+$("#next").on("click", function () {
   let x = $("#pword").val();
   console.log(x);
-  console.log(lastPassword);
-  let len = lastPassword.length;
-  lastPassword[len] = x;
-  json = JSON.stringify(lastPassword);
-  localStorage.setItem("lastPassword",json);
-  questions = localStorage.getItem("questions")
+  let questions = localStorage.getItem("questions");
   questions = JSON.parse(questions);
-  json = JSON.stringify(questions);
-  localStorage.setItem(x,json);
-  window.location.href = "./print.html";
-  
+  console.log(questions.length);
+  if (x.length > 3 && a > 0 && questions.length > 0) {
+    console.log(lastPassword);
+    let len = lastPassword.length;
+    lastPassword[len] = x;
+    json = JSON.stringify(lastPassword);
+    localStorage.setItem("lastPassword", json);
+    questions = localStorage.getItem("questions")
+    questions = JSON.parse(questions);
+    json = JSON.stringify(questions);
+    localStorage.setItem(x, json);
+    window.location.href = "./print.html";
+  }else if (a === 0) {
+    $("#lastCheck").show();
+    $("#lastCheck").text("Once you submit, no more edits");
+    $("#lastCheck").hide(5000);
+    a++;
+  } else {
+    $("#lastCheck").show();
+    $("#lastCheck").text("Length must be at least 4 chars and at least one question.");
+    $("#lastCheck").hide(5000);
+  }
+
 })
 
-$("#bClear").on("click",function(){
+$("#bClear").on("click", function () {
   $("#bQuestion").val("");
   $("#bAnswer").val("");
 });
 
-$("#apiClear").on("click",function(){
+$("#apiClear").on("click", function () {
   $("#apiNumber").val("");
   $("#apiCategory").val("");
   $("#apiDifficulty").val("");
