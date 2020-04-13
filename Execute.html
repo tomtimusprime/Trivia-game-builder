@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="./CSS/Execute.css">
 
@@ -17,9 +20,9 @@
             <a id="logo-container" href="./index.html" class="brand-logo">Trivia Pro</a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="./index.html">Home</a></li>
-                <li><a href="./Create-quiz.html">Create Quiz</a></li>
+                <li><a href="./create-quiz2.html">Create Quiz</a></li>
                 <li><a href="./Print.html">Print Quiz</a></li>
-                <li id="timer">Time Remaining: </li>
+                <!-- <li id="timer">Time Remaining: </li> -->
             </ul>
 
             <ul id="nav-mobile" class="sidenav">
@@ -30,56 +33,66 @@
     </nav>
 
     <div class="parallax-container center-align">
-        <div class="parallax"><img
-                src="https://tse3.mm.bing.net/th?id=OIP.4PeiOXjNmK5f5A3XtpFRzwHaEL&pid=Api&P=0&w=345&h=195"
-                alt="Execute-pic">
-            </div>
-            <div class="spacer">
-                <br>
-                <br>
-                <br>
-            </div>
-
-            <!-- <h4 class="center-align">let's get started....</h4> -->
-
-            <!-- <div class="container">
-                <div class="card"  style="width: 21.5em;margin:0 auto;">
-                    <div class="card-body" id="question-container">
-                        <h5 class="card-title">Javascript Quiz</h5>
-                        <p class="card-text" id="question-element">This is a simple Javascript Quiz. You have 75 seconds to complete the quiz and however many seconds you have left will be translated into your final score. Click the "start" button to kick off the quiz. </p>
-                        <div id="answer-buttons" class="btn-grid hide">
-                        </div>
-                        <div class="controls">
-                            <button id="start" class="btn btn-primary button-effects">Start</button> 
-                            <button id="next" class="btn btn-primary button-effects hide">Next</button> 
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
-            <div class="container">
+        <div class="container">
             <div class="row">
                 <div class="col s12 m12">
-                  <div id="question-container" class="card blue-grey lighten-5">
-                    <div class="card-content black-text darken-3">
-                      <span class="card-title black-text darken-3">Are you ready?</span>
-                      <p class="black-text darken-3" id="question-element">Click the button below to start. You will have no more than 10 minutes to complete the whole 
-                          trivia quiz. There are # questions and you will have # seconds to answer each question.
-                      </p>
-                      <div id="answer-buttons" class="btn-grid hide">
+                    <div id="question-container" class="card blue-grey lighten-5">
+                        <div class="card-content black-text darken-3">
+                            <span class="card-title black-text darken-3">Are you ready?</span>
+                            <p class="black-text darken-3" id="question-element">Click the button below to start. You
+                                will have no more than 10 minutes to complete the whole
+                                trivia quiz.
+                            </p>
+                            <br>
+                            <br>
+                            <form id="how-long" action="#">
+                                <p>
+                                    How long for each question?
+                                    <br>
+                                  <label>
+                                    <input class="with-gap" name="how-long" type="radio" value="15" checked />
+                                    <span>15 seconds</span>
+                                  </label>
+                                  <!-- <label>
+                                    <input class="with-gap" name="how-long" type="radio" value="2" checked />
+                                    <span>2 seconds</span>
+                                  </label> -->
+                                </p>
+                                <p>
+                                  <label>
+                                    <input class="with-gap" name="how-long" type="radio" value="30" />
+                                    <span>30 seconds</span>
+                                  </label>
+                                </p>
+                                <p>
+                                  <label>
+                                    <input class="with-gap" name="how-long" type="radio" value="45"  />
+                                    <span>45 seconds</span>
+                                  </label>
+                                </p>
+                                <p>
+                                  <label>
+                                    <input class="with-gap"name="how-long" type="radio" value="60" />
+                                    <span>60 seconds</span>
+                                  </label>
+                                </p>
+                              </form>
+
+                            <div id="answer-buttons" class="btn-grid hide">
+
+                            </div>
+                        </div>
+                        <div class="card-action waves-light">
+                            <a id="start-button" class="waves-effect waves-light btn center-align" href="#">Click to
+                                begin</a>
+                            <a id="next-button" class="waves-effect waves-light btn center-align hide" href="#">Next
+                                Question</a>
+                            <a id="quit-button" class="waves-effect waves-light btn center-align hide" href="./create-quiz2.html">Quit</a>
+                        </div>
                     </div>
-                    </div>
-                    <div class="card-action waves-light">
-                      <a id="start-button" class="waves-effect waves-light btn center-align" href="#">Click to begin</a>
-                      <a id="next-button" class="waves-effect waves-light btn center-align hide"href="#">Next Question</a>
-                    </div>
-                  </div>
                 </div>
-              </div>
             </div>
-         
-               
-  
+        </div>
     </div>
 
     <footer class="page-footer  cyan darken-4">
