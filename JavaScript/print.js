@@ -28,6 +28,7 @@ $("#qSubmit").on("click", function () {
         for (let i = 0; i < questions.length; i++) {
             console.log(i);
             let eleLi = $("<li>");
+            eleLi.addClass("left-align");
             eleLi.html(questions[i].q + "<br>" + "<br>" + "a) " + questions[i].o[0] + "<br>" + "b) " + questions[i].o[1] + "<br>" + "c) " + questions[i].o[2] + "<br>" + "d) " + questions[i].o[3]);
             $("ol").append(eleLi);
             let eleBr = $("<br>")
@@ -52,6 +53,7 @@ $("#aSubmit").on("click", function () {
         for (let i = 0; i < questions.length; i++) {
             console.log(i);
             let eleLi = $("<li>");
+            eleLi.addClass("left-align");
             eleLi.html(questions[i].a);
             $("ol").append(eleLi);
             let eleBr = $("<br>")
@@ -77,6 +79,7 @@ $("#oSubmit").on("click", function () {
         for (let i = 0; i < questions.length; i++) {
             console.log(i);
             let eleLi = $("<li>");
+            eleLi.addClass("left-align");
             eleLi.html(questions[i].q);
             $("ol").append(eleLi);
             let eleBr = $("<br>")
@@ -120,6 +123,7 @@ $("#lSubmit").on("click", function () {
         for (let i = 0; i < questions.length; i++) {
             console.log(myArray[i]);
             let eleLi = $("<li>");
+            eleLi.addClass("left-align");
             eleLi.html(myArray[i]);
             $("ol").append(eleLi);
             let eleBr = $("<br>")
