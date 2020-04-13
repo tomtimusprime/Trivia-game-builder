@@ -1,4 +1,3 @@
-
 (function ($) {
   $(function () {
 
@@ -9,204 +8,166 @@
 })(jQuery); // end of jQuery name space
 
 $(document).ready(function () {
+
   console.log("ready!");
-
-  function getDataFromLocalStorage() {
-
-  }
-
-  //
 
   //=========================
   //Declare the DOM variables
   //=========================
   const questionContainerElement = $("#question-container");
+  const cardTitle = $(".card-title");
   const nextBtn = $("#next-button");
-  const questionElement = $("#question-element");
-  const answerButtonsElement = $("#answer-buttons");
-
-  let shuffledQuestions;
-  let currentQuestionIndex;
   let startButton = $("#start-button");
-  let timerCount = 100;
+  const questionElement = $("#question-element");
+  const answerElement = $("#answer-buttons");
+  const quitButton = $("#quit-button");
+  let questions = JSON.parse(localStorage.getItem("questions"));
+  let numberOfQuestions;
+  checkLocalStorage(questions);
+  let currentQuestionIndex;
+  let timerCount = 5;
+  const MAX_TIME = 5;
+  let questionTimer = MAX_TIME;
+  let radioValue;
+
+  function determineHowManyQuestions(questions) {
+    let numberOfQuestions = 0;
+    for (let i = 0; i < questions.length; i++) {
+      numberOfQuestions += 1;
+    }
+    return numberOfQuestions;
+  }
+
+
+  function checkLocalStorage(questions) {
+    if (questions === null) {
+      $("#how-long").addClass("hide");
+      startButton.addClass("hide");
+      questionContainerElement.removeClass("hide");
+      questionElement.removeClass("hide")
+      questionElement.text("You didn't select any questions for your trivia game. Go back to the create quiz page by clicking the quit button.");
+      quitButton.removeClass("hide");
+    }
+    else {
+      numberOfQuestions = determineHowManyQuestions(questions);
+      questions = JSON.parse(localStorage.getItem("questions"));
+      console.log(questions);
+    }
+  }
 
   //Event Listeners
   startButton.on("click", function (e) {
+    radioValue = $("input[name='how-long']:checked").val();
+    radioValue = parseInt(radioValue);
+    console.log(radioValue);
+    questionTimer = radioValue;
     startGame();
   })
 
-  nextBtn.addEventListener("click", function () {
-    currentQuestionIndex++;
-    setNextQuestion();
-  });
 
-  function quizTimer() {
-    let timerTextElement = $("#timer");
-    let timerId = setInterval(function () {
-      timerCount--;
-      timerTextElement.text(`Time Remaining: ${timerCount}`);
-      if (timerCount === 0) {
-        clearTimeout(timerId);
-        startButton.addClass("hide");
-        nextBtn.addClass("hide");
-        answerButtonsElement.addClass("hide");
-        endGame();
-      }
-    }, 1000);
-  }
+  // function triviaTimer() {
+  //   let timerTextElement = $("#timer");
+  //   let timerId = setInterval(function () {
+  //     if (timerCount < 1) {
+  //       clearInterval(timerId);
+  //       startButton.addClass("hide");
+  //       nextBtn.addClass("hide");
+  //       answerElement.addClass("hide");
+  //       endGame();
+  //     }
+  //     timerTextElement.text(`Time Remaining: ${timerCount}`);
+  //     timerCount--;
+  //   }, 1000);
+  // }
 
   function startGame() {
-    timer = quizTimer();
+    // timer = triviaTimer();
     console.log("game started");
     startButton.addClass("hide");
+    quitButton.removeClass("hide");
+    $("#how-long").addClass("hide");
     questionContainerElement.removeClass("hide");
-    // questionElement.removeClass("hide")
-    // nextBtn.removeClass("hide");
-    // answerButtonsElement.removeClass("hide");
-    shuffledQuestions = questions.sort(function () {
-      return Math.random() - 0.5;
-    })
+    questionElement.removeClass("hide")
+    nextBtn.removeClass("hide");
+    nextBtn.attr('disabled', 'disabled');
+    answerElement.removeClass("hide");
     currentQuestionIndex = 0;
     setNextQuestion();
   }
   function setNextQuestion() {
-    resetQuestions();
-    showQuestion(shuffledQuestions[currentQuestionIndex]);
+    showQuestion(questions[currentQuestionIndex]);
   }
-
-  //Created a timer object to be assigned to the variable up above so I could manipulate the timer from outside the setInterval 
-  //function. This also handles the penalty when you get an answer wrong.
-  let timerObject = {
-    stop: function () { clearTimeout(timerId); }
-  }
-
 
   //==================================================
-  //Generate the questions and buttons to be displayed
+  //Generate the questions and answers to be displayed
   //==================================================
   function showQuestion(question) {
-    questionElement.innerText = question.question;
-    question.answers.forEach(answer => {
-      const button = document.createElement("button");
-      button.innerText = answer.text;
-      button.setAttribute("class", "btn btn-primary button-effects");
-      if (answer.correct) {
-        button.dataset.correct = answer.correct;
-      }
-      button.addEventListener("click", selectAnswer);
-      answerButtonsElement.appendChild(button);
-    })
-  }
-
-  //=============================================
-  //resets the answerButtonsElement using the DOM
-  //=============================================
-  function resetQuestions() {
-    nextBtn.classList.add("hide");
-    while (answerButtonsElement.firstChild) {
-      answerButtonsElement.removeChild(answerButtonsElement.firstChild);
-    }
-  }
-
-  //=======================================================================================================================
-  //generates the new buttons associated with the question and answer objects within the questions array and displays them.
-  //=======================================================================================================================
-  function selectAnswer(e) {
-    const selectedButton = e.target;
-    const correct = selectedButton.dataset.correct;
-    setStatusClass(document.body, correct);//selects the body element and sets it to the ".correct" css class
-    Array.from(answerButtonsElement.children).forEach(button => {
-      setStatusClass(button, button.dataset.correct);
-    });
-    if (!correct) {
-      timer.penalty();
-    }
-    if (shuffledQuestions.length > currentQuestionIndex + 1) {
-      nextBtn.classList.remove("hide");
-    }
-    else {
+    answerElement.empty();
+    nextBtn.removeClass("hide");
+    nextBtn.attr('disabled', 'disabled');
+    nextBtn.text(`Time remaining: ${radioValue}`);
+    cardTitle.text("");
+    if (!question) {
       endGame();
     }
-
-  }
-
-  //================================================================================================================
-  //Code to the change the background and button color according to whether the user gets the answer correct or not.
-  //================================================================================================================
-
-  function setStatusClass(element, correct) {
-    clearStatusClass(element);
-    if (correct) {
-      element.classList.add("correct");
-    }
     else {
-      element.classList.add("wrong");
+      questionElement.text(question.q);
+      answerElement.removeClass("hide");
+      questionTimerFunction();
+      for (let i = 0; i < question.o.length; i++) {
+        const pTag = $("<p>");
+        pTag.text(question.o[i]);
+        answerElement.append(pTag);
+      }
+
     }
   }
 
-  function clearStatusClass(element) {
-    element.classList.remove("correct");
-    element.classList.remove("wrong");
-  }
-
-  //=======================================================================================================================
-  //This code handles when the quiz is over. It creates a form to input your initials and saves them to local storage to be displayed on the High Scores html page.
-  //=======================================================================================================================
-  function endGame() {
-    timer.stop();
-    document.body.setAttribute("style", "background-color:#5995ED");
-    let highscore = timerCount;
-    answerButtonsElement.classList.add("hide");
-    questionElement.innerText = `The quiz is over! Enter your initials to add yourself to the high scores list! Your score is ${highscore}.`;
-    let submitButton = document.createElement("button");
-    submitButton.innerText = "Submit";
-    submitButton.setAttribute("class", "btn btn-primary button-effects");
-    let formSubmission = document.createElement("input");
-    formSubmission.setAttribute("type", "text");
-    questionContainerElement.appendChild(formSubmission);
-    questionContainerElement.appendChild(submitButton);
-    //Submit button handler code
-    submitButton.addEventListener("click", function (e) {
-      let highScores = localStorage.getItem("highscores");
-      if (highScores === null) {
-        highScores = [];
-      } else {
-        highScores = JSON.parse(highScores);
+  function questionTimerFunction() {
+    let timerId2 = setInterval(function () {
+      if (questionTimer < 1) {
+        clearInterval(timerId2);
+        currentQuestionIndex++;
+        questionTimer = radioValue;
+        setNextQuestion();
       }
-      highScores.push({
-        initials: formSubmission.value,
-        score: highscore
-      });
-      highScores.sort(compare).reverse();
-
-      localStorage.setItem("highscores", JSON.stringify(highScores));
-      formSubmission.textContent = "";
-      questionContainerElement.removeChild(formSubmission);
-      questionContainerElement.removeChild(submitButton);
-      questionElement.classList.add("hide");
-      startButton.classList.remove('hide');
-      startButton.innerText = "Restart";
-
-    })
-
+      nextBtn.text(`Time Remaining: ${questionTimer}`);
+      questionTimer--;
+    }, 1000);
   }
-  //This is a simple compare function to be able to sort the high scores. Used in the endGame function
-  function compare(a, b) {
-    if (a.score > b.score) return 1;
-    if (b.score > a.score) return -1;
 
-    return 0;
+  function endGame() {
+    nextBtn.addClass("hide");
+    answerElement.addClass("hide");
+    questionElement.text("Time's up! The trivia quiz is over!");
+
   }
 
 });
 
+//Done - 1. Get data from local storage - so I need to load Schwynn's version and get that data so I know how to manipulate it.
+//Done - mostly 2. Once I have that in an array of objects, I can then manipulate and generate the question cards.
+//Done - 3. add timer option on the actual execute page.
+//Done - 4. Need to test the overall timer
+//Done - 5. Need to add the ability to get how long they want each question to be in seconds
+//Done - 6. Need to add that timer to each question.
+//7. throw in animations. - maybe get with Ian on that. 
+//8. need to make sure everything is styled correctly across all pages.
+//Done - 9. Need to pull the data of how many questions there are
+//10. fix the quotes issue that Schwyn was talking about
+//** get ABCD to show up in front of questions - ask Ian maybe? */
 
-//1. Get data from local storage - so I need to load Schwynn's version and get that data so I know how to manipulate it.
-//2. Once I have that in an array of objects, I can then manipulate and generate the question cards.
-//3. add timer option on the actual execute page.
-
+//Make a powerpoint - include what will happen in future updates?
+//Go back through the checklist
+//something is wrong in the dropdown when you try to create the trivia quiz
+//We need to handle if someone puts one self-created question and then tries 20 questions from the drop down - need to make that consistent
+//because there's 4 other question spots they could use.
+//Need to use the GIPHY API
+//Need to use AOS and implement that
 //For future updates - add additional categories
 //Make two different options for the execute - one with multiple choice answers and one without
+
+//To go over with Ian - Animations, get ABCD to show up in front of questions, Done- how to handle when the questions end.
 
 
 //We still need to use Giphy
