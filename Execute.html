@@ -38,6 +38,14 @@
                 <div class="col s12 m12">
                     <div id="question-container" class="card blue-grey lighten-5">
                         <div class="card-content black-text darken-3">
+                            <div id="code-div">
+                                <p>Type in a code below to pull up the trivia quiz that you've assigned to it (default code is "questions").</p>
+                                <input id="code" type="text" placeholder="code">
+                                <a id="code-button" class="waves-effect waves-light btn center-align"
+                                    href="#">submit</a>
+                                <p id="code-success" style="color: green;"></p>
+                            </div>
+
                             <span class="card-title black-text darken-3">Are you ready?</span>
                             <p class="black-text darken-3" id="question-element">Click the button below to start. You
                                 will have no more than 10 minutes to complete the whole
@@ -45,49 +53,60 @@
                             </p>
                             <br>
                             <br>
+
                             <form id="how-long" action="#">
                                 <p>
                                     How long for each question?
                                     <br>
-                                  <label>
-                                    <input class="with-gap" name="how-long" type="radio" value="15" checked />
-                                    <span>15 seconds</span>
-                                  </label>
-                                  <!-- <label>
+                                    <p>
+                                    <label>
+                                        <input class="with-gap" name="how-long" type="radio" value="5" checked />
+                                        <span>5 seconds</span>
+                                    </label>
+                                    </p>
+                                    <p>
+                                    <label>
+                                        <input class="with-gap" name="how-long" type="radio" value="15" checked />
+                                        <span>15 seconds</span>
+                                    </label>
+                                    <!-- <label>
                                     <input class="with-gap" name="how-long" type="radio" value="2" checked />
                                     <span>2 seconds</span>
                                   </label> -->
                                 </p>
                                 <p>
-                                  <label>
-                                    <input class="with-gap" name="how-long" type="radio" value="30" />
-                                    <span>30 seconds</span>
-                                  </label>
+                                    <label>
+                                        <input class="with-gap" name="how-long" type="radio" value="30" />
+                                        <span>30 seconds</span>
+                                    </label>
                                 </p>
                                 <p>
-                                  <label>
-                                    <input class="with-gap" name="how-long" type="radio" value="45"  />
-                                    <span>45 seconds</span>
-                                  </label>
+                                    <label>
+                                        <input class="with-gap" name="how-long" type="radio" value="45" />
+                                        <span>45 seconds</span>
+                                    </label>
                                 </p>
                                 <p>
-                                  <label>
-                                    <input class="with-gap"name="how-long" type="radio" value="60" />
-                                    <span>60 seconds</span>
-                                  </label>
+                                    <label>
+                                        <input class="with-gap" name="how-long" type="radio" value="60" />
+                                        <span>60 seconds</span>
+                                    </label>
                                 </p>
-                              </form>
-
+                            </form>
                             <div id="answer-buttons" class="btn-grid hide">
 
                             </div>
                         </div>
-                        <div class="card-action waves-light">
+                        <div id="button-div" class="card-action waves-light">
                             <a id="start-button" class="waves-effect waves-light btn center-align" href="#">Click to
                                 begin</a>
                             <a id="next-button" class="waves-effect waves-light btn center-align hide" href="#">Next
                                 Question</a>
-                            <a id="quit-button" class="waves-effect waves-light btn center-align hide" href="./create-quiz2.html">Quit</a>
+                            <a id="quit-button" class="waves-effect waves-light btn center-align hide"
+                                href="./create-quiz2.html">Quit</a>
+                            <a id="reset-button" class="waves-effect waves-light btn center-align hide"
+                                href="#">Reset</a>
+                                
                         </div>
                     </div>
                 </div>

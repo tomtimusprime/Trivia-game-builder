@@ -10,25 +10,44 @@
 $(document).ready(function () {
 
   console.log("ready!");
+  localStorage.removeItem("lastPassword"); //ask schwyn about this.
 
   //=========================
   //Declare the DOM variables
   //=========================
   const questionContainerElement = $("#question-container");
   const cardTitle = $(".card-title");
+  const codeElement = $("#code");
+  const codeButton = $("#code-button");
   const nextBtn = $("#next-button");
   let startButton = $("#start-button");
   const questionElement = $("#question-element");
   const answerElement = $("#answer-buttons");
   const quitButton = $("#quit-button");
-  let questions = JSON.parse(localStorage.getItem("questions"));
+  let resetButton = $("#reset-button");
+  let timer;
+  let code = codeElement.val();
+  // let questions = JSON.parse(localStorage.getItem("questions"));
+  let key = localStorage.key(0);
+  let questions;
+  if (!localStorage.getItem("questions")) {
+    questions = JSON.parse(localStorage.getItem(key));
+  }
+  else {
+    questions = JSON.parse(localStorage.getItem("questions"));
+  }
+  console.log(questions);
   let numberOfQuestions;
+  console.log(localStorage.length);
   checkLocalStorage(questions);
+
   let currentQuestionIndex;
   let timerCount = 5;
   const MAX_TIME = 5;
   let questionTimer = MAX_TIME;
   let radioValue;
+
+  // endGame();
 
   function determineHowManyQuestions(questions) {
     let numberOfQuestions = 0;
@@ -40,20 +59,32 @@ $(document).ready(function () {
 
 
   function checkLocalStorage(questions) {
-    if (questions === null) {
+    if (localStorage.length === 0) {
       $("#how-long").addClass("hide");
       startButton.addClass("hide");
       questionContainerElement.removeClass("hide");
       questionElement.removeClass("hide")
-      questionElement.text("You didn't select any questions for your trivia game. Go back to the create quiz page by clicking the quit button.");
+      questionElement.text("You didn't associate a code with a trivia quiz or select any questions for your trivia game. Go back to the create quiz page to create a quiz.");
       quitButton.removeClass("hide");
     }
     else {
+
       numberOfQuestions = determineHowManyQuestions(questions);
-      questions = JSON.parse(localStorage.getItem("questions"));
       console.log(questions);
     }
+
+    // questions = JSON.parse(localStorage.getItem(questions));
+    // why is this showing null?
+    //how do I handle a case where if there is nothing in local storage? Why is this not working?
+    //or if there is a code, but no questions, how can we default to that?
+    //And then what the hell with the giphy stuff?
   }
+  // else {
+  //   questions = code;
+  //   questions = localStorage.getItem(questions);
+  //   questions = JSON.parse(questions);
+  // }
+
 
   //Event Listeners
   startButton.on("click", function (e) {
@@ -61,8 +92,40 @@ $(document).ready(function () {
     radioValue = parseInt(radioValue);
     console.log(radioValue);
     questionTimer = radioValue;
+    $("#code-div").addClass("hide");
+    resetButton.removeClass("hide");
     startGame();
+
   })
+
+  resetButton.on("click", function () {
+    $("#code-div").removeClass("hide");
+    answerElement.addClass("hide");
+    reset();
+  })
+
+  codeButton.on("click", function () {
+    $("#code-success").show();
+    $("#code-success").text("Successfully added your code.");
+    $("#code-success").hide(5000);
+    code = codeElement.val();
+    questions = code;
+    questions = JSON.parse(localStorage.getItem(questions));
+    console.log(questions);
+    reset();
+
+  })
+
+
+  function reset() {
+    questionElement.text("Click the button below to start. You will have no more than 10 minutes to complete the whole trivia quiz.");
+    quitButton.addClass("hide");
+    startButton.removeClass("hide");
+    resetButton.addClass("hide");
+    clearInterval(timer);
+    nextBtn.addClass("hide");
+    $("#how-long").removeClass("hide");
+  }
 
 
   // function triviaTimer() {
@@ -116,17 +179,34 @@ $(document).ready(function () {
       questionTimerFunction();
       for (let i = 0; i < question.o.length; i++) {
         const pTag = $("<p>");
-        pTag.text(question.o[i]);
-        answerElement.append(pTag);
+        if (question.o[i] === question.o[0]) {
+          pTag.text("a.) " + question.o[i]);
+          answerElement.append(pTag);
+        }
+        if (question.o[i] === question.o[1]) {
+          pTag.text("b.) " + question.o[i]);
+          answerElement.append(pTag);
+        }
+        if (question.o[i] === question.o[2] && question.o[i].length > 0) {
+          pTag.text("c.) " + question.o[i]);
+          answerElement.append(pTag);
+        }
+        if (question.o[i] === question.o[3] && question.o[i].length > 0) {
+          pTag.text("d.) " + question.o[i]);
+          answerElement.append(pTag);
+        }
+        // pTag.text(question.o[i]);
+        // answerElement.append(pTag);
+
       }
 
     }
   }
 
   function questionTimerFunction() {
-    let timerId2 = setInterval(function () {
+    timer = setInterval(function () {
       if (questionTimer < 1) {
-        clearInterval(timerId2);
+        clearInterval(timer);
         currentQuestionIndex++;
         questionTimer = radioValue;
         setNextQuestion();
@@ -139,11 +219,29 @@ $(document).ready(function () {
   function endGame() {
     nextBtn.addClass("hide");
     answerElement.addClass("hide");
-    questionElement.text("Time's up! The trivia quiz is over!");
+    questionElement.text("That's it! The trivia quiz is over!");
+    resetButton.attr("class", "waves-effect waves-light btn center-align");
+    $("#button-div").append(resetButton);
+    $.ajax({
+      headers: {
+        "Accept": "application/json",
+        "userkey": "dc6zaTOxFJmzC",
+        "Access-Control-Allow-Origin": "*"
+      },
+      url: "https://cors-anywhere.herokuapp.com/https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q=congrats",
+      method: "GET"
+    }).then(function (response) {
+      console.log(response);
+      console.log(response.data[0].url);
+      let img = $("<img>").attr("src", response.data[0].images.downsized_large.url);
+      questionElement.append("<br>").append(img);
+
+    })
 
   }
 
 });
+
 
 //Done - 1. Get data from local storage - so I need to load Schwynn's version and get that data so I know how to manipulate it.
 //Done - mostly 2. Once I have that in an array of objects, I can then manipulate and generate the question cards.
@@ -175,6 +273,33 @@ $(document).ready(function () {
 
 //We still need to use Giphy
 
+//Bug concerning the code portion of the create quiz - have to click it twice?
+//If you quit the execute page it's a rabit trail to get back
+//But with the nav bar - this is known.
+
+//constructor - it's like classes because Javascript doesn't actually have real classes you can use class syntax as well.
+// function Timer(timeLength) {
+//   this.MAX_TIME = timeLength;
+//   this.time = this.MAX_TIME;
+//   this.start = function () { }
+//   this.interval = ()=> setInterval(this.timer, 1000);
+//   this.timer = function () {
+//     if (this.time < 1) {
+//       this.stop();
+//       currentQuestionIndex++;
+//       this.time = this.MAX_TIME;
+//     }
+//     // nextBtn.text(`Time Remaining: ${this.time}`);
+//     console.log(this.time);
+//     this.time--;
+
+//   }
+//   this.stop = function () {
+//     clearInterval(this.interval);
+//   }
+// }
+
+// var timer2 = new Timer(5);
 
 
 
