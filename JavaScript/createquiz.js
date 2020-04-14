@@ -177,7 +177,7 @@ $("#deleteButton").on("click", function () {
 })
 
 //  sort button
-$(".sortB").on("click", function () {
+$("#sortB").on("click", function () {
   console.log(1);
   let questions = localStorage.getItem("questions");
   questions = JSON.parse(questions);
@@ -314,6 +314,7 @@ $("#bButton").on("click", function () {
 
 });
 
+// Multiple Clear Button
 $("#mClear").on("click", function () {
   $("#mQuestion").val("");
   $("#mAnswer").val("");
@@ -323,6 +324,7 @@ $("#mClear").on("click", function () {
   $("#mOption4").val("");
 });
 
+// next button
 let lastPassword = localStorage.getItem("lastPassword");
 lastPassword = JSON.parse(lastPassword);
 if (lastPassword === null) {
@@ -345,7 +347,7 @@ $("#next").on("click", function () {
     questions = JSON.parse(questions);
     json = JSON.stringify(questions);
     localStorage.setItem(x, json);
-    window.location.href = "./print.html";
+    window.location.href = "./Print.html";
   }else if (a === 0) {
     $("#lastCheck").show();
     $("#lastCheck").text("Once you submit, no more edits");
@@ -359,11 +361,13 @@ $("#next").on("click", function () {
 
 })
 
+// Boolean Clear Button
 $("#bClear").on("click", function () {
   $("#bQuestion").val("");
   $("#bAnswer").val("");
 });
 
+// API Clear Button
 $("#apiClear").on("click", function () {
   $("#apiNumber").val("");
   $("#apiCategory").val("");
