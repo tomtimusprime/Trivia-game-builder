@@ -14,7 +14,6 @@ $("#cSubmit").on("click", function () {
         $("#error").show()
         $("#error").text("Code not found");
         $("#error").hide(4000);
-
     }
 })
 
@@ -25,21 +24,29 @@ $("#qSubmit").on("click", function () {
         console.log(questions[0].q);
         console.log(questions[0].o[0]);
         $("ol").empty();
+        let liNum = 1;
         for (let i = 0; i < questions.length; i++) {
             console.log(i);
             let eleLi = $("<li>");
             eleLi.addClass("left-align");
-            eleLi.html(questions[i].q + "<br>" + "<br>" + "a) " + questions[i].o[0] + "<br>" + "b) " + questions[i].o[1] + "<br>" + "c) " + questions[i].o[2] + "<br>" + "d) " + questions[i].o[3]);
+            if (questions[i].o[2] === "") {
+                eleLi.html(liNum + ") " + questions[i].q + "<br>" + "<br>" + "a) " + questions[i].o[0] + "<br>" + "b) " + questions[i].o[1] + "<br>");
+            } else {
+                eleLi.html(liNum + ") " + questions[i].q + "<br>" + "<br>" + "a) " + questions[i].o[0] + "<br>" + "b) " + questions[i].o[1] + "<br>" + "c) " + questions[i].o[2] + "<br>" + "d) " + questions[i].o[3]);
+            }
+            liNum++;
             $("ol").append(eleLi);
             let eleBr = $("<br>")
             $("ol").append(eleBr);
         }
+        $("nav").hide();
         $("#top").hide();
         let print = setTimeout(function () {
             window.print();
         }, 1000);
         let bringBack = setTimeout(function () {
-            $("#top").show()
+            $("#top").show();
+            $("nav").show();
         }, 5000);
     }
 
@@ -50,21 +57,25 @@ $("#aSubmit").on("click", function () {
         console.log(questions);
         console.log(questions[0].a);
         $("ol").empty();
+        let liNum = 1;
         for (let i = 0; i < questions.length; i++) {
             console.log(i);
             let eleLi = $("<li>");
             eleLi.addClass("left-align");
-            eleLi.html(questions[i].a);
+            eleLi.html(liNum + ") " + questions[i].a);
+            liNum++;
             $("ol").append(eleLi);
             let eleBr = $("<br>")
             $("ol").append(eleBr);
         }
+        $("nav").hide();
         $("#top").hide();
         let print = setTimeout(function () {
             // window.print();
         }, 1000);
         let bringBack = setTimeout(function () {
-            $("#top").show()
+            $("nav").show();
+            $("#top").show();
         }, 5000);
     }
 
@@ -76,21 +87,25 @@ $("#oSubmit").on("click", function () {
         console.log(questions);
         console.log(questions[0].o[0]);
         $("ol").empty();
+        let liNum = 1;
         for (let i = 0; i < questions.length; i++) {
             console.log(i);
             let eleLi = $("<li>");
             eleLi.addClass("left-align");
-            eleLi.html(questions[i].q);
+            eleLi.html(liNum + ") " + questions[i].q);
+            liNum++;
             $("ol").append(eleLi);
             let eleBr = $("<br>")
             $("ol").append(eleBr);
         }
+        $("nav").hide();
         $("#top").hide();
         let print = setTimeout(function () {
             // window.print();
         }, 1000);
         let bringBack = setTimeout(function () {
-            $("#top").show()
+            $("#top").show();
+            $("nav").show();
         }, 5000);
     }
 
@@ -120,21 +135,25 @@ $("#lSubmit").on("click", function () {
                 }
         }
         $("ol").empty();
+        let liNum = 1;
         for (let i = 0; i < questions.length; i++) {
             console.log(myArray[i]);
             let eleLi = $("<li>");
             eleLi.addClass("left-align");
-            eleLi.html(myArray[i]);
+            eleLi.html(liNum + ") " + myArray[i]);
+            liNum++;
             $("ol").append(eleLi);
             let eleBr = $("<br>")
             $("ol").append(eleBr);
         }
+        $("nav").hide();
         $("#top").hide();
         let print = setTimeout(function () {
             // window.print();
         }, 1000);
         let bringBack = setTimeout(function () {
             $("#top").show()
+            $("nav").show();
         }, 5000);
     }
 
