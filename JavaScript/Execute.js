@@ -156,6 +156,9 @@ $(document).ready(function () {
 //Done - 9. Need to pull the data of how many questions there are
 //10. fix the quotes issue that Schwyn was talking about
 //** get ABCD to show up in front of questions - ask Ian maybe? */
+//clean up the create quiz page
+//add a button to go to the execute page after the submit button or make the functionality of the submit button include going to the execute page.
+//
 
 //Make a powerpoint - include what will happen in future updates?
 //Go back through the checklist
