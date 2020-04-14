@@ -16,6 +16,9 @@ $(document).ready(function () {
   //=========================
   const questionContainerElement = $("#question-container");
   const cardTitle = $(".card-title");
+  const codeElement = $("#code");
+  const codeButton = $("#code-button");
+  let code;
   const nextBtn = $("#next-button");
   let startButton = $("#start-button");
   const questionElement = $("#question-element");
@@ -53,6 +56,15 @@ $(document).ready(function () {
       questions = JSON.parse(localStorage.getItem("questions"));
       console.log(questions);
     }
+    // if(!codeElement.val()) {
+    // }
+    // else {
+    //   code = codeElement.val();
+    //   questions = code;
+    //   questions = localStorage.getItem(questions);
+    //   questions = JSON.parse(questions);
+    // }
+    
   }
 
   //Event Listeners
@@ -61,7 +73,16 @@ $(document).ready(function () {
     radioValue = parseInt(radioValue);
     console.log(radioValue);
     questionTimer = radioValue;
+    // checkLocalStorage(questions);
     startGame();
+  })
+
+  codeButton.on("click", function() {
+      $("#code-success").show();
+      $("#code-success").text("Successfully added your code.");
+      $("#code-success").hide(5000);
+    checkLocalStorage(questions);
+
   })
 
 

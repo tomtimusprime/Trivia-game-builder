@@ -38,6 +38,11 @@
                 <div class="col s12 m12">
                     <div id="question-container" class="card blue-grey lighten-5">
                         <div class="card-content black-text darken-3">
+                            <p>Type in a code below to pull up the trivia quiz that you've assigned to it.</p>
+                            <input id="code" type="text" placeholder="code">
+                            <a id="code-button" class="waves-effect waves-light btn center-align" href="#">submit</a>
+                            <p id="code-success" style="color: green;"></p>
+
                             <span class="card-title black-text darken-3">Are you ready?</span>
                             <p class="black-text darken-3" id="question-element">Click the button below to start. You
                                 will have no more than 10 minutes to complete the whole
@@ -45,6 +50,7 @@
                             </p>
                             <br>
                             <br>
+                            
                             <form id="how-long" action="#">
                                 <p>
                                     How long for each question?
@@ -77,10 +83,8 @@
                                   </label>
                                 </p>
                               </form>
+                             
 
-                            <div id="answer-buttons" class="btn-grid hide">
-
-                            </div>
                         </div>
                         <div class="card-action waves-light">
                             <a id="start-button" class="waves-effect waves-light btn center-align" href="#">Click to
