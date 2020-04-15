@@ -105,15 +105,23 @@ $(document).ready(function () {
   })
 
   codeButton.on("click", function () {
-    $("#code-success").show();
-    $("#code-success").text("Successfully added your code.");
-    $("#code-success").hide(5000);
     code = codeElement.val();
     questions = code;
     questions = JSON.parse(localStorage.getItem(questions));
     console.log(questions);
-    reset();
-
+    if(!localStorage.getItem(code)) {
+      $("#code-success").show();
+      $("#code-success").attr("style", "color: red;");
+      $("#code-success").text("That code isn't associated with a trivia quiz.");
+      $("#code-success").hide(5000);
+    }
+    else {
+      $("#code-success").show();
+      $("#code-success").attr("style", "color: green;");
+      $("#code-success").text("Successfully added your code.");
+      $("#code-success").hide(5000);
+      reset();
+    }
   })
 
 
@@ -274,6 +282,8 @@ $(document).ready(function () {
 //We still need to use Giphy
 
 //Bug concerning the code portion of the create quiz - have to click it twice?
+//Special characters are still not showing up
+//Is it possible to put in the code that you already created in the create quiz page to modify it? If not, can we add that functionality?
 //If you quit the execute page it's a rabit trail to get back
 //But with the nav bar - this is known.
 
