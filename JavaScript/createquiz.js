@@ -2,7 +2,23 @@
 $('select').material_select();
 
 // removing local storage key to be used again
-localStorage.removeItem("questions");
+// localStorage.removeItem("questions");
+let questions = localStorage.getItem("questions");
+questions = JSON.parse(questions);
+if (questions === null) {
+  questions = [];
+}
+for (let i = 0; i < questions.length; i++) {
+  console.log(i);
+  let eleD = $("<div>");
+  let eleQ = $("<p>");
+  eleQ.addClass("selectP");
+  eleQ.attr("id", i);
+  eleQ.html((i + 1) + ") " + questions[i].q + "<br>" + "<br>" + questions[i].o[0] + "<br>" + questions[i].o[1] + "<br>" + questions[i].o[2] + "<br>" + questions[i].o[3]);
+  eleD.append(eleQ);
+  $("#demo").append(eleD);
+}
+
 $("#apiButton").on("click", function () {
 
   let eleI = $("<i>");
@@ -55,7 +71,7 @@ $("#apiButton").on("click", function () {
 
     // limiting the length to 20 so they purchase premium lol
     let checkNumber = $("#apiNumber").val();
-    if(checkNumber === null){
+    if (checkNumber === null) {
       checkNumber = 1;
     }
     console.log(checkNumber);
@@ -79,11 +95,11 @@ $("#apiButton").on("click", function () {
           if (text[i] === "&" && text[i + 1] === "q") {
             text.splice(i, 6, "\"");
           }
-          if (text[i] === "&" && text[i + 1] === "a"){
+          if (text[i] === "&" && text[i + 1] === "a") {
             text.splice(i, 5, "&");
           }
-          if (text[i] === "&" && text[i + 1] === "e"){
-            text.splice(i, 8,"\'","e");
+          if (text[i] === "&" && text[i + 1] === "e") {
+            text.splice(i, 8, "\'", "e");
           }
           if (text[i] === "&" && text[i + 1] === "#") {
             text.splice(i, 6, "\'");
@@ -94,23 +110,23 @@ $("#apiButton").on("click", function () {
 
         // edit the answer syntax
         let textA = rightAnswer.split("");
-        console.log("textA "+textA)
+        console.log("textA " + textA)
         for (let i = 0; i < textA.length; i++) {
           if (textA[i] === "&" && textA[i + 1] === "q") {
             textA.splice(i, 6, "\"");
           }
-          if (textA[i] === "&" && textA[i + 1] === "a"){
+          if (textA[i] === "&" && textA[i + 1] === "a") {
             textA.splice(i, 5, "&");
           }
-          if (textA[i] === "&" && textA[i + 1] === "e"){
-            textA.splice(i, 8,"\'","e");
+          if (textA[i] === "&" && textA[i + 1] === "e") {
+            textA.splice(i, 8, "\'", "e");
           }
           if (textA[i] === "&" && textA[i + 1] === "#") {
             textA.splice(i, 6, "\'");
           }
         }
         response.results[q].correct_answer = textA.join("")
-        console.log( response.results[q].correct_answer);
+        console.log(response.results[q].correct_answer);
 
         // Inserting the answer radomly into the wrong answer list
         let randomNumber = Math.floor(Math.random() * 4);
@@ -126,11 +142,11 @@ $("#apiButton").on("click", function () {
               console.log("55555");
               optionFix.splice(z, 6, "\"");
             }
-            if (optionFix[z] === "&" && optionFix[z + 1] === "a"){
+            if (optionFix[z] === "&" && optionFix[z + 1] === "a") {
               optionFix.splice(z, 5, "&");
             }
-            if (optionFix[z] === "&" && optionFix[z + 1] === "e"){
-              optionFix.splice(z, 8,"\'","e");
+            if (optionFix[z] === "&" && optionFix[z + 1] === "e") {
+              optionFix.splice(z, 8, "\'", "e");
             }
             if (optionFix[z] === "&" && optionFix[z + 1] === "#") {
               console.log("6666");
@@ -178,9 +194,9 @@ $("#apiButton").on("click", function () {
     } else {
       $("#apiError").show();
       $("#apiError").text("Sorry! No more than 20. Delete to add more.");
-      setTimeout(function(){
+      setTimeout(function () {
         $("#apiError").hide();
-      },2000);
+      }, 2000);
     }
   });
 })
@@ -290,23 +306,23 @@ $("#mButton").on("click", function () {
       } else {
         $("#multipleError").show();
         $("#multipleError").text("Sorry! No more than 20. Delete to add more.");
-        setTimeout(function(){
+        setTimeout(function () {
           $("#multipleError").hide();
-        },2000);
+        }, 2000);
       }
     } else {
       $("#multipleError").show();
       $("#multipleError").text("Please match answer to an option.");
-      setTimeout(function(){
+      setTimeout(function () {
         $("#multipleError").hide();
-      },2000);
+      }, 2000);
     }
   } else {
     $("#multipleError").show();
     $("#multipleError").text("A value can not be left blank.");
-    setTimeout(function(){
+    setTimeout(function () {
       $("#multipleError").hide();
-    },2000);
+    }, 2000);
   }
 
 });
@@ -351,17 +367,17 @@ $("#bButton").on("click", function () {
       } else {
         $("#booleanError").show();
         $("#booleanError").text("Sorry! No more than 20. Delete to add more.");
-        setTimeout(function(){
+        setTimeout(function () {
           $("#booleanError").hide();
-        },2000);
+        }, 2000);
       }
 
     } else {
       $("#booleanError").show();
       $("#booleanError").text("Sorry! Anwer must be True or False.");
-      setTimeout(function(){
+      setTimeout(function () {
         $("#booleanError").hide();
-      },2000);
+      }, 2000);
     }
   }
 
@@ -398,7 +414,7 @@ $("#next").on("click", function () {
     let year = d.getUTCFullYear();
     let month = parseInt(d.getMonth());
     month = month + 1;
-    let today = new Date(month +"/"+day+"/"+year).getTime();
+    let today = new Date(month + "/" + day + "/" + year).getTime();
     today = Math.floor(today / 1000 / 60 / 60 / 24);
     let newObj = {
       time: today,
@@ -412,19 +428,19 @@ $("#next").on("click", function () {
     json = JSON.stringify(questions);
     localStorage.setItem(x, json);
     window.location.href = "./Print.html";
-  }else if (a === 0) {
+  } else if (a === 0) {
     $("#lastCheck").show();
     $("#lastCheck").text("Once you submit, no more edits");
-    setTimeout(function(){
+    setTimeout(function () {
       $("#lastCheck").hide();
-    },2000);
+    }, 2000);
     a++;
   } else {
     $("#lastCheck").show();
     $("#lastCheck").text("Length must be at least 4 characters and quiz contain at least one question.");
-    setTimeout(function(){
+    setTimeout(function () {
       $("#lastCheck").hide();
-    },5000);
+    }, 5000);
   }
 
 })
@@ -451,7 +467,7 @@ $(document).on("dblclick", ".selectP", function () {
   console.log(questions[0].a);
   let choice = $(this).attr("id");
   console.log(choice);
- $("#mQuestion").val(questions[choice].q);
+  $("#mQuestion").val(questions[choice].q);
   $("#mAnswer").val(questions[choice].a);
   $("#mOption1").val(questions[choice].o[0]);
   $("#mOption2").val(questions[choice].o[1]);
