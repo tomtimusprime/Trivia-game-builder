@@ -47,8 +47,6 @@ $(document).ready(function () {
   let questionTimer = MAX_TIME;
   let radioValue;
 
-  // endGame();
-
   function determineHowManyQuestions(questions) {
     let numberOfQuestions = 0;
     for (let i = 0; i < questions.length; i++) {
@@ -73,17 +71,7 @@ $(document).ready(function () {
       console.log(questions);
     }
 
-    // questions = JSON.parse(localStorage.getItem(questions));
-    // why is this showing null?
-    //how do I handle a case where if there is nothing in local storage? Why is this not working?
-    //or if there is a code, but no questions, how can we default to that?
-    //And then what the hell with the giphy stuff?
   }
-  // else {
-  //   questions = code;
-  //   questions = localStorage.getItem(questions);
-  //   questions = JSON.parse(questions);
-  // }
 
 
   //Event Listeners
@@ -137,22 +125,6 @@ $(document).ready(function () {
     nextBtn.addClass("hide");
     $("#how-long").removeClass("hide");
   }
-
-
-  // function triviaTimer() {
-  //   let timerTextElement = $("#timer");
-  //   let timerId = setInterval(function () {
-  //     if (timerCount < 1) {
-  //       clearInterval(timerId);
-  //       startButton.addClass("hide");
-  //       nextBtn.addClass("hide");
-  //       answerElement.addClass("hide");
-  //       endGame();
-  //     }
-  //     timerTextElement.text(`Time Remaining: ${timerCount}`);
-  //     timerCount--;
-  //   }, 1000);
-  // }
 
   function startGame() {
     // timer = triviaTimer();
@@ -267,6 +239,11 @@ $(document).ready(function () {
 //clean up the create quiz page
 //add a button to go to the execute page after the submit button or make the functionality of the submit button include going to the execute page.
 //Add functionality to show how many questions there in each quiz they selected.
+//Get the handling for the start button if they add a code that isn't there and press the start button.
+//fix the navbar on create page
+//update buttons on create page
+//get all the navs mobile friendly
+//review create page and see how we can make it more user friendly
 
 //Make a powerpoint - include what will happen in future updates?
 //Go back through the checklist
@@ -313,6 +290,19 @@ $(document).ready(function () {
 
 // var timer2 = new Timer(5);
 
-
+ // function triviaTimer() {
+  //   let timerTextElement = $("#timer");
+  //   let timerId = setInterval(function () {
+  //     if (timerCount < 1) {
+  //       clearInterval(timerId);
+  //       startButton.addClass("hide");
+  //       nextBtn.addClass("hide");
+  //       answerElement.addClass("hide");
+  //       endGame();
+  //     }
+  //     timerTextElement.text(`Time Remaining: ${timerCount}`);
+  //     timerCount--;
+  //   }, 1000);
+  // }
 
 
