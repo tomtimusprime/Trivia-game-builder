@@ -118,8 +118,11 @@ $(document).ready(function () {
     else {
       $("#code-success").show();
       $("#code-success").attr("style", "color: green;");
-      $("#code-success").text("Successfully added your code.");
-      $("#code-success").hide(5000);
+      $("#code-success").text("Successfully added your code. That quiz has " + numberOfQuestions + " question(s).");
+      $("#code-success").hide(10000);
+      // let newP = $("<p>").text("That quiz has " + numberOfQuestions);
+      // codeElement.append(newP);
+      // console.log("That quiz has " + numberOfQuestions);
       reset();
     }
   })
@@ -256,15 +259,14 @@ $(document).ready(function () {
 //Done - 3. add timer option on the actual execute page.
 //Done - 4. Need to test the overall timer
 //Done - 5. Need to add the ability to get how long they want each question to be in seconds
-//Done - 6. Need to add that timer to each question.
-//7. throw in animations. - maybe get with Ian on that. 
+//Done - 6. Need to add that timer to each questions
 //8. need to make sure everything is styled correctly across all pages.
 //Done - 9. Need to pull the data of how many questions there are
 //10. fix the quotes issue that Schwyn was talking about
 //** get ABCD to show up in front of questions - ask Ian maybe? */
 //clean up the create quiz page
 //add a button to go to the execute page after the submit button or make the functionality of the submit button include going to the execute page.
-//
+//Add functionality to show how many questions there in each quiz they selected.
 
 //Make a powerpoint - include what will happen in future updates?
 //Go back through the checklist
