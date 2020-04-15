@@ -1,3 +1,4 @@
+localStorage.removeItem("questions");
 (function ($) {
   $(function () {
 
@@ -47,6 +48,7 @@
     }
   });
 }());
+localStorage.removeItem("questions");
 
 // let lastPassword = localStorage.getItem("lastPassword");
 // lastPassword = JSON.parse(lastPassword);
