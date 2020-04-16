@@ -1,80 +1,156 @@
-localStorage.removeItem("questions");
-(function ($) {
-  $(function () {
+var wrapperNode = document.getElementById('wrapper')
+var scrollDownNode = document.querySelector('.scroll-down')
+var linkNodes = document.querySelector('.links')
 
-    $('.sidenav').sidenav();
-    $('.parallax').parallax();
+var vh = window.innerHeight
 
+/* STORE SOME KEY LOCATIONS */
 
-  }); // end of document ready
-})(jQuery); // end of jQuery name space
+/* ~ le fin ~
+ * The point where you cannot scroll down any further.
+ */
+var fin = wrapperNode.clientHeight - vh + linkNodes.clientHeight
 
-(function () {
+function calculateAnimations() {
+  return [
+    /* animate Cs */
+    { range: [-1, fin * 0.5], selector: '.c', type: 'scale', style: 'transform:translateY', from: 0, to: 25, unit: 'px' },
+    { range: [fin * 0.5, fin], selector: '.c', type: 'scale', style: 'transform:translateY', from: 25, to: 0, unit: 'px' },
+    { range: [fin * 0.4, fin], selector: '.c', type: 'change', style: 'color', to: '#ffb515' },
 
-  var bv = new Bideo();
-  bv.init({
-    // Video element
-    videoEl: document.querySelector('#background_video'),
+    /* animate Hs */
+    { range: [-1, fin * 0.5], selector: '.h', type: 'scale', style: 'transform:scaleX', from: 1, to: 0.5 },
+    { range: [-1, fin * 0.5], selector: '.h', type: 'scale', style: 'transform:scaleY', from: 1, to: 0.5 },
+    { range: [fin * 0.5, fin], selector: '.h', type: 'scale', style: 'transform:scaleX', from: 0.5, to: 1 },
+    { range: [fin * 0.5, fin], selector: '.h', type: 'scale', style: 'transform:scaleY', from: 0.5, to: 1 },
+    { range: [fin * 0.3, fin], selector: '.h', type: 'change', style: 'color', to: '#1fd1ec' },
 
-    // Container element
-    container: document.querySelector('body'),
+    /* animate Os */
+    { range: [fin * 0.1, fin], selector: '.o', type: 'randomizeColor' },
 
-    // Resize
-    resize: true,
+    /* animate Rs */
+    { range: [-1, fin * 0.5], selector: '.r', type: 'scale', style: 'transform:rotateX', from: 0, to: 90, unit: 'deg' },
+    { range: [fin * 0.5, fin], selector: '.r', type: 'scale', style: 'transform:rotateX', from: 90, to: 0, unit: 'deg' },
+    { range: [fin * 0.3, fin], selector: '.r', type: 'change', style: 'color', to: '#8382f9' },
 
-    // autoplay: false,
+    /* animate Es */
+    { range: [fin * 0.3, fin], selector: '.e', type: 'change', style: 'color', to: '#ff1b9b' },
 
-    isMobile: window.matchMedia('(max-width: 768px)').matches,
+    /* animate Gs */
+    { range: [-1, fin * 0.5], selectors: ['.g', '.j'], type: 'scale', style: 'transform:rotateZ', from: 0, to: 180, unit: 'deg' },
+    { range: [fin * 0.5, fin], selectors: ['.g', '.j'], type: 'scale', style: 'transform:rotateZ', from: 180, to: 360, unit: 'deg' },
+    { range: [fin * 0.4, fin], selectors: ['.g', '.j'], type: 'change', style: 'color', to: '#ff8b1c' },
 
-    // playButton: document.querySelector('#play'),
-    // pauseButton: document.querySelector('#pause'),
+    /* animate As */
+    { range: [-1, fin * 0.5], selectors: ['.a', '.s'], type: 'scale', style: 'transform:rotateZ', from: 0, to: -180, unit: 'deg' },
+    { range: [fin * 0.5, fin], selectors: ['.a', '.s'], type: 'scale', style: 'transform:rotateZ', from: -180, to: -360, unit: 'deg' },
+    { range: [fin * 0.4, fin], selectors: ['.a', '.s'], type: 'change', style: 'color', to: '#c05bdb' },
 
-    // Array of objects containing the src and type
-    // of different video formats to add
-    src: [
-      {
-        src: 'Images/night.mp4',
-        type: 'video/mp4'
-      },
-      // {
-      //   src: 'night.webm',
-      //   type: 'video/webm;codecs="vp8, vorbis"'
-      // }
-    ],
+    /* animate Ps */
+    { range: [-1, fin * 0.5], selectors: ['.p', '.dash'], type: 'scale', style: 'opacity', from: 1, to: 0.1 },
+    { range: [fin * 0.5, fin], selectors: ['.p', '.dash'], type: 'scale', style: 'opacity', from: 0.1, to: 1 },
+    { range: [fin * 0.4, fin], selectors: ['.p', '.dash'], type: 'change', style: 'color', to: '#ff537c' },
 
-    // What to do once video loads (initial frame)
-    onLoad: function () {
-      document.querySelector('#video_cover').style.display = 'none';
+    /* animate line */
+    { range: [-1, fin], selector: '.line', type: 'scale', style: 'width', from: 0.01, to: 50, unit: '%' },
+    { range: [-1, fin], selector: '.line', type: 'scale', style: 'opacity', from: 0, to: 1 },
+
+    /* animate arrow */
+    { range: [0.6 * fin, fin], selector: '.scroll-down', type: 'scale', style: 'opacity', from: 1, to: 0 },
+    { range: [fin - 30, fin], selector: '.scroll-down', type: 'change', style: 'display', to: 'none' },
+
+    /* animate links */
+    { range: [0.8 * fin, fin], selector: '.links', type: 'scale', style: 'opacity', from: 0, to: 1 }
+  ]
+}
+
+// Instantiate choreographer.
+var choreographer = new Choreographer({
+  animations: calculateAnimations(),
+  customFunctions: {
+    randomizeColor: function (data) {
+      var chars = '0123456789abcdef'.split('')
+      var hex = '#'
+
+      while (hex.length < 7) {
+        hex += chars[Math.round(Math.random() * (chars.length - 1))]
+      }
+
+      data.node.style.color = hex
     }
-  });
-}());
-localStorage.removeItem("questions");
+  }
+})
 
-// let lastPassword = localStorage.getItem("lastPassword");
-// lastPassword = JSON.parse(lastPassword);
-// if (lastPassword !== null) {
-//   let d = new Date();
-//   let day = d.getDate();
-//   let year = d.getUTCFullYear();
-//   let month = parseInt(d.getMonth());
-//   month = month + 1;
-//   let today = new Date(month + "/" + day + "/" + year).getTime();
-//   today = Math.floor(today / 1000 / 60 / 60 / 24);
+function animate() {
+  var scrollPosition = (wrapperNode.getBoundingClientRect().top - wrapperNode.offsetTop) * -1
+  choreographer.runAnimationsAt(scrollPosition)
+}
 
-//   let newP =[];
-//   let deleteQuiz = [];
+document.body.addEventListener('scroll', animate)
 
-//   for(let i = 0; i < lastPassword.length; i++){
-//     let checkD = lastPassword[i].time + 10;
-//     if(checkD < today){
-//       deleteQuiz.push(lastPassword[i].pWord);
-//     }else{
-//       newP.push(lastPassword[i]);
-//     }
-//   }
-//   for(let i =0; i < deleteQuiz.length; i++){
-//     localStorage.remove(deleteQuiz[i]);
-//   }
-//   let json = JSON.stringify(newP);
-//   localStorage.setItem("lastPassword",json);
-// }
+animate()
+
+window.addEventListener('resize', function () {
+  choreographer.updateAnimations(calculateAnimations())
+})
+
+// setting up the arrows
+console.log(window.innerWidth);
+if(window.innerWidth > 1700){
+  let rem = Math.floor(window.innerWidth / 31);
+  rem = rem + "rem";
+  console.log(rem);
+  $(".ar").css("margin-left", rem);
+}else if(window.innerWidth > 1400){
+  $(".ar").css("margin-left", "15rem");
+}else if(window.innerWidth > 1300){
+  $(".ar").css("margin-left", "5rem");
+}else{
+  $(".ar").css("margin-left", "0px");
+  console.log("check check")
+}
+
+// Keeping the arrows responsive
+setInterval(function(){
+  // console.log(window.innerWidth);
+  if(window.innerWidth > 1700){
+    let rem = Math.floor(window.innerWidth / 31);
+    rem = rem + "rem";
+    console.log(rem);
+    $(".ar").css("margin-left", rem);
+  }else if(window.innerWidth > 1400){
+    $(".ar").css("margin-left", "15rem");
+  }else if(window.innerWidth > 1300){
+    $(".ar").css("margin-left", "5rem");
+  }else{
+    $(".ar").css("margin-left", "0px");
+  }
+},500)
+
+// button to lead to quiz
+console.log("schwyn");
+$("button").on("click", function () {
+  console.log(typeof window.innerWidth);
+  console.log(window.innerWidth);
+  if(window.innerWidth > 1200){
+    console.log("cool");
+    let spTime = 2500;
+    let waTime = 7000;
+    let spin = "./Images/spin.gif"
+    let warp = "../Images/warpSpeed.gif"
+    $("body").css('background-image', 'url(' + warp + ')');
+    $("body").css('background-image', 'background-position: center center');
+    $("body").css('background-image', 'bbackground-repeat: no-repeat');
+    $("body").css('background-image', 'background-attachment: fixed');
+    $(".container").hide();
+    $(".ar").hide();
+    setTimeout(function () {
+      console.log("warp picture")
+      window.location.href = "https://tomtimusprime.github.io/Trivia-game-builder/create-quiz2.html"
+    }, waTime)
+  }else{
+    window.location.href = "https://tomtimusprime.github.io/Trivia-game-builder/create-quiz2.html"
+  }
+
+})
+
