@@ -10,7 +10,7 @@
 $(document).ready(function () {
 
   console.log("ready!");
-  localStorage.removeItem("lastPassword"); //ask schwyn about this.
+  // localStorage.removeItem("lastPassword"); //ask schwyn about this.
 
   //=========================
   //Declare the DOM variables
@@ -66,7 +66,6 @@ $(document).ready(function () {
       quitButton.removeClass("hide");
     }
     else {
-
       numberOfQuestions = determineHowManyQuestions(questions);
       console.log(questions);
     }
@@ -244,6 +243,9 @@ $(document).ready(function () {
 //update buttons on create page
 //get all the navs mobile friendly
 //review create page and see how we can make it more user friendly
+//Does the localstorage empty after a certain amount of time?
+//Add functionality to the next button the code for create page. Have that drop down text tell them to hit the submit button. Or a label that takes them to the execute page.
+//navbar is that one navbar function in there?
 
 //Make a powerpoint - include what will happen in future updates?
 //Go back through the checklist

@@ -1,0 +1,281 @@
+<html>
+
+<head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        body {
+            background: #B0BEC5;
+        }
+
+        #logo-container {
+            color: #444444
+        }
+
+        nav ul a {
+            color: #444444;
+        }
+        nav a {
+            color: #26A69A;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="blue-grey lighten-5" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="./index.html" class="brand-logo">Trivia Pro</a>
+            <ul class="right hide-on-med-and-down">
+                <li class="nav-bar-text"><a href="./index.html">Home</a></li>
+                <li><a href="./create-quiz2.html">Create Quiz</a></li>
+                <li><a href="./Print.html">Print Quiz</a></li>
+                <li><a href="./Execute.html">Execute</a></li>
+                <!-- <li id="timer">Time Remaining: </li> -->
+            </ul>
+
+            <ul id="nav-mobile" class="sidenav">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./create-quiz2.html">Create Quiz</a></li>
+                <li><a href="./Print.html">Print Quiz</a></li>
+                <li><a href="./Execute.html">Execute</a></li>
+            </ul>
+            <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12">
+                <div id="question-container" class="card lighten-5">
+                    <div class="card-content black-text darken-3">
+                        <div class="container">
+                            <div class="row">
+                                <h3 class="center-align">Welcome to the create Trivia Quiz Page!</h3>
+                                <!-- <div class="col s10"></div> -->
+                                <p>
+                                    <ol>
+                                        <li>Choose the type of questions you would like to include in your Trivia Quiz
+                                            below. You
+                                            can Generate
+                                            up to 20 total questions.</li>
+                                        <li>You can have us do it for you by simply using only the
+                                            generate questions in the left
+                                            column or you can create your own true or false questions and or multiple
+                                            choice
+                                            questions. You can also choose a combination of all three!</li>
+                                        <li> When choosing
+                                            a multiple choice question of your own, remember to include your answer as
+                                            one of
+                                            the options as well.</li>
+                                        <li>Finally, Choose a key that you would like to save this trivia quiz under.
+                                        </li>
+                                        <li>You can preview your quiz below.</li>
+                                    </ol>
+
+                                </p>
+                            </div>
+                            <div class="row">
+                                <div class="col s3">
+                                    <input id="pword" type="text" placeholder="Trivia Key"><br>
+                                    <a id="next" class="waves-effect waves-light btn center-align" href="#">Save Key</a>
+                                    <br>
+                                    <p id="lastCheck" style="color: red;"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s4 m4 border" id="form">
+                                    <h5 class="center-align">Generate Random Questions</h5>
+                                    <select class="browser-default" id="apiNumber">
+                                        <option type="text" placeholder="Number of Questions" Disabled selected># of
+                                            Questions
+                                        </option>
+                                        <option value="1">1</option>
+                                        <option value="5">5</option>
+                                        <option value="10">10</option>
+                                        <option value="15">15</option>
+                                        <option value="20">20</option>
+                                    </select>
+
+                                    <select class="browser-default" id="apiCategory">
+                                        <option type="text" placeholder="Category" disabled selected>Category
+                                        </option>
+                                        <option value="21">Sports</option>
+                                        <option value="9">General Knowledge</option>
+                                        <option value="27">Animals</option>
+                                        <option value="23">History</option>
+                                        <option value="18">Science: Computers</option>
+                                        <option value="">Any Category</option>
+                                    </select>
+
+                                    <select class="browser-default" id="apiDifficulty">
+                                        <option type="text" placeholder="Difficulty" disabled selected>Difficulty
+                                        </option>
+                                        <option value="easy">Medium</option>
+                                        <option value="medium">Hard</option>
+                                        <option value="hard">Genius</option>
+                                    </select>
+                                    <p id="apiError" style="color: red;"></p>
+                                    <a id="apiButton" class="waves-effect waves-light btn center-align"
+                                        href="#">Submit</a>
+                                </div>
+                                <div class="col s4 m4 border">
+                                    <h5 class="center-align">Create Your Own Multiple Choice</h5>
+                                    <input clss="white-input" id="mQuestion" type="text" placeholder="Question">
+                                    <input id="mAnswer" type="text" placeholder="Answer">
+                                    <input id="mOption1" type="text" placeholder="Option 1">
+                                    <input id="mOption2" type="text" placeholder="Option 2">
+                                    <input id="mOption3" type="text" placeholder="Option 3">
+                                    <input id="mOption4" type="text" placeholder="Option 4">
+                                    <p id="multipleError" style="color: red;"></p>
+                                    <a id="mButton" class="waves-effect waves-light btn center-align"
+                                        href="#">Submit</a>
+                                    <a id="mClear" class="waves-effect waves-light btn center-align" href="#">Clear</a>
+                                </div>
+                                <div class="col s4 m4 border">
+                                    <h5 class="center-align">Create Your Own True or False</h5>
+                                    <input id="bQuestion" type="text" placeholder="Question">
+                                    <input id="bAnswer" type="text" placeholder="Answer">
+                                    <p id="booleanError" style="color: red;"></p>
+                                    <a id="bButton" class="waves-effect waves-light btn center-align"
+                                        href="#">Submit</a>
+                                    <a id="bClear" class="waves-effect waves-light btn center-align" href="#">Clear</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12">
+                <div id="question-container" class="card white lighten-5">
+                    <div class="card-content black-text darken-3">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col s12"></div>
+                                <h3 class="center-align">Your newly generated Trivia Quiz will be displayed here:</h3>
+                                <p id="demo"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12">
+                <div id="question-container" class="card white lighten-5">
+                    <div class="card-content black-text darken-3">
+                        <div class="container">
+                            <div class="row">
+                                <h3 class="center-align">Edit your Trivia Quiz</h3>
+                                <p>If you'd like to delete any of your questions or change the order, you can do so
+                                    below:</p>
+                                <div class="row">
+                                    <div class="col s6 m6">
+                                        <input id="deleteInput" type="text" placeholder="number">
+                                        <a id="deleteButton" class="waves-effect waves-light btn center-align"
+                                            href="#">Delete</a>
+                                    </div>
+                                    <div class="col s6 m6">
+                                        <input id="sort1" type="text" placeholder="first number"><input id="sort2"
+                                            type="text" placeholder="second number">
+                                        <a id="sortB" class="waves-effect waves-light btn center-align"
+                                            href="#">Sort</a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col s12"></div>
+                                    <p id="demo"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+    <footer class="page-footer  cyan darken-4">
+
+        <div class="footer-copyright">
+            <div class="container">
+                <h5>Made by <a class="brown-text text-lighten-3">&copy;Ministry of Magic Group</a></h5>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="./JavaScript/createquiz2.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        $('.dropdown-trigger').dropdown();
+        $('select').formSelect();
+        $('.sidenav').sidenav();
+    </script>
+
+</body>
+
+</html>
+
+
+
+<!-- Dropdown Trigger
+                            <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!</a>
+
+                        
+                            <ul id='dropdown1' class='dropdown-content'>
+                                <li><a href="#!">one</a></li>
+                                <li><a href="#!">two</a></li>
+                                <li class="divider" tabindex="-1"></li>
+                                <li><a href="#!">three</a></li>
+                                <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
+                                <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
+                            </ul>
+                            <div class="row">
+                                <div class="col s4 m4 border" id="form">
+                                <h5 class="center-align">Trivia Generator</h5>
+                                
+                                <a class='dropdown-trigger btn' href='#' data-target='apiNumber'>Number of Questions</a>
+                                    <ul id="apiNumber" class="dropdown-content">
+                                        <li><a href="#" value="5">5</a></li>
+                                        <li><a href="#" value="10">10</a></li>
+                                        <li><a href="#" value="15">15</a></li>
+                                        <li><a href="#" value="20">20</a></li>
+                                    </ul>
+                                    <br>
+                                    
+                                    <a class='dropdown-trigger btn' href='#' data-target='apiCategory'>Category</a>
+                                        <ul id="apiCategory" class="dropdown-content">
+                                            <li><a href="#" value="21">Sports</a></li>
+                                            <li><a href="#" value="9">General Knowledge</a></li>
+                                            <li><a href="#" value="27">Animals</a></li>
+                                            <li><a href="#" value="23">History</a></li>
+                                            <li><a href="#" value="18">Science: computers</a></li>
+                                            <li><a href="#" value="">Any category</a></li>
+                                          </ul>
+                                    <a class='dropdown-trigger btn' href='#' data-target='apiDifficulty'>Difficulty</a>
+                                        <ul id="apiDifficulty" class="dropdown-content">
+                                            <li><a href="#" value="easy">Easy</a></li>
+                                            <li><a href="#" value="medium">Medium</a></li>
+                                            <li><a href="#" value="hard">Hard</a></li>
+                                          </ul>
+                                          <p id="apiError" style="color: red;"></p>
+                                    <a id="apiButton" class="waves-effect waves-light btn center-align" href="#">Submit</a>-->

@@ -1,9 +1,14 @@
 
-$('.dropdown-trigger').dropdown();
 // material jquery
 
 // removing local storage key to be used again
 // localStorage.removeItem("questions");
+$( document ).ready(function() {
+$('.dropdown-trigger').dropdown();
+$('select').formSelect();
+$('.sidenav').sidenav();
+    console.log( "ready!" );
+
 let questions = localStorage.getItem("questions");
 questions = JSON.parse(questions);
 if (questions === null) {
@@ -474,4 +479,6 @@ $(document).on("dblclick", ".selectP", function () {
   $("#mOption2").val(questions[choice].o[1]);
   $("#mOption3").val(questions[choice].o[2]);
   $("#mOption4").val(questions[choice].o[3]);
+});
+
 });
