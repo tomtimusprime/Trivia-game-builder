@@ -137,7 +137,7 @@ $("button").on("click", function () {
     let spTime = 2500;
     let waTime = 7000;
     let spin = "./Images/spin.gif"
-    let warp = "../Images/warpSpeed.gif"
+    let warp = "./Images/warpSpeed.gif"
     $("body").css('background-image', 'url(' + warp + ')');
     $("body").css('background-image', 'background-position: center center');
     $("body").css('background-image', 'bbackground-repeat: no-repeat');
@@ -146,10 +146,10 @@ $("button").on("click", function () {
     $(".ar").hide();
     setTimeout(function () {
       console.log("warp picture")
-      window.location.href = "https://tomtimusprime.github.io/Trivia-game-builder/create-quiz2.html"
+      window.location.href = "./createquiz.html";
     }, waTime)
   }else{
-    window.location.href = "https://tomtimusprime.github.io/Trivia-game-builder/create-quiz2.html"
+    window.location.href = "./createquiz.html";
   }
 
 })
