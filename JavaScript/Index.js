@@ -135,7 +135,7 @@ $("button").on("click", function () {
   if(window.innerWidth > 1200){
     console.log("cool");
     let spTime = 2500;
-    let waTime = 7000;
+    let waTime = 6800;
     let spin = "./Images/spin.gif"
     let warp = "./Images/warpSpeed.gif"
     $("body").css('background-image', 'url(' + warp + ')');
