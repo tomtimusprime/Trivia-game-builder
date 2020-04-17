@@ -23,7 +23,7 @@ for (let i = 0; i < questions.length; i++) {
   let eleQ = $("<p>");
   eleQ.addClass("selectP");
   eleQ.attr("id", i);
-  eleQ.html((i + 1) + ") " + questions[i].q + "<br>" + "<br>" + questions[i].o[0] + "<br>" + questions[i].o[1] + "<br>" + questions[i].o[2] + "<br>" + questions[i].o[3]);
+  eleQ.html((i + 1) + ") " + questions[i].q + "<br>" + "<br>" + questions[i].o[0] + "<br>" + questions[i].o[1] + "<br>" + questions[i].o[2] + "<br>" + questions[i].o[3]+ "<br>" + "<br>");
   eleD.append(eleQ);
   $("#demo").append(eleD);
 }
@@ -191,7 +191,7 @@ $("#apiButton").on("click", function () {
         let eleQ = $("<p>");
         eleQ.addClass("selectP");
         eleQ.attr("id", i);
-        eleQ.html((i + 1) + ") " + questions[i].q + "<br>" + "<br>" + questions[i].o[0] + "<br>" + questions[i].o[1] + "<br>" + questions[i].o[2] + "<br>" + questions[i].o[3]);
+        eleQ.html((i + 1) + ") " + questions[i].q + "<br>" + "<br>" + questions[i].o[0] + "<br>" + questions[i].o[1] + "<br>" + questions[i].o[2] + "<br>" + questions[i].o[3]+ "<br>" + "<br>");
         eleD.append(eleQ);
         $("#demo").append(eleD);
       }
@@ -230,7 +230,7 @@ $("#deleteButton").on("click", function () {
       let eleQ = $("<p>");
       eleQ.addClass("selectP");
       eleQ.attr("id", i);
-      eleQ.html((i + 1) + ") " + questions[i].q + "<br>" + "<br>" + questions[i].o[0] + "<br>" + questions[i].o[1] + "<br>" + questions[i].o[2] + "<br>" + questions[i].o[3]);
+      eleQ.html((i + 1) + ") " + questions[i].q + "<br>" + "<br>" + questions[i].o[0] + "<br>" + questions[i].o[1] + "<br>" + questions[i].o[2] + "<br>" + questions[i].o[3]+ "<br>" + "<br>");
       eleD.append(eleQ);
       $("#demo").append(eleD);
     }
@@ -264,7 +264,7 @@ $("#sortB").on("click", function () {
       let eleQ = $("<p>");
       eleQ.addClass("selectP");
       eleQ.attr("id", i);
-      eleQ.html((i + 1) + ") " + questions[i].q + "<br>" + "<br>" + questions[i].o[0] + "<br>" + questions[i].o[1] + "<br>" + questions[i].o[2] + "<br>" + questions[i].o[3]);
+      eleQ.html((i + 1) + ") " + questions[i].q + "<br>" + "<br>" + questions[i].o[0] + "<br>" + questions[i].o[1] + "<br>" + questions[i].o[2] + "<br>" + questions[i].o[3]+ "<br>" + "<br>");
       eleD.append(eleQ);
       $("#demo").append(eleD);
     }
@@ -308,7 +308,7 @@ $("#mButton").on("click", function () {
           let eleQ = $("<p>");
           eleQ.addClass("selectP");
           eleQ.attr("id", i);
-          eleQ.html((i + 1) + ") " + questions[i].q + "<br>" + "<br>" + questions[i].o[0] + "<br>" + questions[i].o[1] + "<br>" + questions[i].o[2] + "<br>" + questions[i].o[3]);
+          eleQ.html((i + 1) + ") " + questions[i].q + "<br>" + "<br>" + questions[i].o[0] + "<br>" + questions[i].o[1] + "<br>" + questions[i].o[2] + "<br>" + questions[i].o[3]+ "<br>" + "<br>");
           eleD.append(eleQ);
           $("#demo").append(eleD);
         }
@@ -369,7 +369,7 @@ $("#bButton").on("click", function () {
           let eleQ = $("<p>");
           eleQ.addClass("selectP");
           eleQ.attr("id", i);
-          eleQ.html((i + 1) + ") " + questions[i].q + "<br>" + "<br>" + questions[i].o[0] + "<br>" + questions[i].o[1] + "<br>" + questions[i].o[2] + "<br>" + questions[i].o[3]);
+          eleQ.html((i + 1) + ") " + questions[i].q + "<br>" + "<br>" + questions[i].o[0] + "<br>" + questions[i].o[1] + "<br>" + questions[i].o[2] + "<br>" + questions[i].o[3]+ "<br>" + "<br>");
           eleD.append(eleQ);
           $("#demo").append(eleD);
         }
