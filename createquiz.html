@@ -14,9 +14,9 @@
 </head>
 
 <body>
-    <nav class="blue-grey lighten-5" role="navigation">
-        <div class="nav-wrapper container">
-            <a id="logo-container" href="./index.html" class="brand-logo">Trivia Pro</a>
+    <nav class="brown lighten-5" role="navigation">
+        <div class="nav-wrapper container blue-grey-text">
+            <a id="logo-container" href="./index.html" class="brand-logo blue-grey-text">Trivia Pro</a>
             <ul class="right hide-on-med-and-down">
                 <li class="nav-bar-text"><a href="./index.html">Home</a></li>
                 <li><a href="./createquiz.html">Create Quiz</a></li>
@@ -41,32 +41,12 @@
         <div class="row">
             <div class="col s12 m12">
                 <div id="question-container" class="card lighten-5 z-depth-5">
-                    <div class="card-content black-text darken-3">
+                    <div class="card-content amber lighten-5">
                         <div class="container">
                             <div class="row">
-                                <h3 class="center-align">Welcome to the create Trivia Quiz Page!</h3>
-                                <!-- <div class="col s10"></div> -->
-                                <p>
-                                    <ol>
-                                        <li>Choose the type of questions you would like to include in your Trivia Quiz
-                                            below. You
-                                            can Generate
-                                            up to 20 total questions.</li>
-                                        <li>You can have us do it for you by simply using only the
-                                            generate questions in the left
-                                            column or you can create your own true or false questions and or multiple
-                                            choice
-                                            questions. You can also choose a combination of all three!</li>
-                                        <li> When choosing
-                                            a multiple choice question of your own, remember to include your answer as
-                                            one of
-                                            the options as well.</li>
-                                        <li>Finally, Choose a key that you would like to save this trivia quiz under.
-                                        </li>
-                                        <li>You can preview your quiz below.</li>
-                                    </ol>
+                                <h2 class="center-align light-blue-text">Welcome to the create Trivia
+                                    Quiz Page!</h2>
 
-                                </p>
                             </div>
                         </div>
                     </div>
@@ -79,14 +59,19 @@
         <div class="row">
             <div class="col s12 m12">
                 <div id="question-container" class="card lighten-5 z-depth-5">
-                    <div class="card-content black-text darken-3">
+                    <div class="card-content amber lighten-5">
                         <div class="container">
                             <div class="row">
+                                <h4 class="red-text text-darken-3">Step 1: Select your Quiz criteria </h4>
+                                <p class="purple-text text-lighten-2"> Mix and match any of the three available trivia
+                                    quiz generators. Press Submit after each selection to immediately see your trivia
+                                    questions generate below!</p>
                                 <div class="col s12 m6 border" id="form">
-                                    <h5 class="center-align">Generate Random Questions</h5>
-                                    <select class="browser-default" id="apiNumber">
-                                        <option type="text" placeholder="Number of Questions" Disabled selected>Number of Questions
-                                            
+                                    <h5 class="center-align teal-text text-darken-4">Generate Random Questions</h5>
+                                    <select class="browser-default teal-text text-darken-4" id="apiNumber">
+                                        <option type="text" placeholder="Number of Questions" Disabled selected>Number
+                                            of Questions
+
                                         </option>
                                         <option value="1">1</option>
                                         <option value="5">5</option>
@@ -95,7 +80,7 @@
                                         <option value="20">20</option>
                                     </select>
 
-                                    <select class="browser-default" id="apiCategory">
+                                    <select class="browser-default teal-text text-darken-4" id="apiCategory">
                                         <option type="text" placeholder="Category" disabled selected>Category
                                         </option>
                                         <option value="21">Sports</option>
@@ -106,35 +91,36 @@
                                         <option value="">Any Category</option>
                                     </select>
 
-                                    <select class="browser-default" id="apiDifficulty">
+                                    <select class="browser-default teal-text text-darken-4" id="apiDifficulty">
                                         <option type="text" placeholder="Difficulty" disabled selected>Difficulty
                                         </option>
                                         <option value="easy">Medium</option>
                                         <option value="medium">Hard</option>
                                         <option value="hard">Genius</option>
                                     </select>
-                                    <p id="apiError" style="color: red;"></p>
+                                    <p id="apiError" style="color: darkviolet;"></p>
                                     <a id="apiButton" class="waves-effect waves-light btn center-align">Submit</a>
                                 </div>
                                 <div class="col s12 m6 border">
-                                    <h5 class="center-align">Create Your Own True or False</h5>
+                                    <h5 class="center-align teal-text text-darken-4">Create Your Own True or False</h5>
                                     <input id="bQuestion" type="text" placeholder="Question">
                                     <input id="bAnswer" type="text" placeholder="Answer">
-                                    <p id="booleanError" style="color: red;"></p>
+                                    <p id="booleanError" style="color: darkviolet;"></p>
                                     <a id="bButton" class="waves-effect waves-light btn center-align">Submit</a>
                                     <a id="bClear" class="waves-effect waves-light btn center-align">Clear</a>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col s12 m12 border">
-                                    <h5 class="center-align">Create Your Own Multiple Choice</h5>
+                                    <h5 class="center-align teal-text text-darken-4">Create Your Own Multiple Choice
+                                    </h5>
                                     <input clss="white-input" id="mQuestion" type="text" placeholder="Question">
                                     <input id="mAnswer" type="text" placeholder="Answer">
                                     <input id="mOption1" type="text" placeholder="Option 1">
                                     <input id="mOption2" type="text" placeholder="Option 2">
                                     <input id="mOption3" type="text" placeholder="Option 3">
                                     <input id="mOption4" type="text" placeholder="Option 4">
-                                    <p id="multipleError" style="color: red;"></p>
+                                    <p id="multipleError" style="color: darkviolet;"></p>
                                     <a id="mButton" class="waves-effect waves-light btn center-align">Submit</a>
                                     <a id="mClear" class="waves-effect waves-light btn center-align">Clear</a>
                                 </div>
@@ -150,11 +136,12 @@
         <div class="row">
             <div class="col s12 m12">
                 <div id="question-container" class="card white lighten-5 z-depth-5">
-                    <div class="card-content black-text darken-3">
+                    <div class="card-content amber lighten-5">
                         <div class="container">
                             <div class="row">
                                 <div class="col s12"></div>
-                                <h3 class="center-align">Your newly generated Trivia Quiz will be displayed here:</h3>
+                                <h3 class="center-align red-text text-darken-3">Your newly generated Trivia Quiz
+                                    will displayed here:</h3>
                                 <p id="demo"></p>
                             </div>
 
@@ -170,12 +157,15 @@
         <div class="row">
             <div class="col s12 m12">
                 <div id="question-container" class="card white lighten-5 z-depth-5">
-                    <div class="card-content black-text darken-3">
+                    <div class="card-content amber lighten-5">
                         <div class="container">
                             <div class="row">
-                                <h3 class="center-align">Edit your Trivia Quiz</h3>
-                                <p>If you'd like to delete any of your questions or change the order, you can do so
-                                    below:</p>
+                                <h3 class="center-align deep-orange-text text-darken-4">Edit your Trivia Quiz</h3>
+                                <!-- <p>If you'd like to delete any of your questions or change the order, you can do so
+                                    below:</p> -->
+                                <h4 class="amber-text text-darken-3">Step 2: Modify your Quiz (optional)</h4>
+                                <p class="purple-text text-lighten-2">You can delete any question(s) of your choice, or
+                                    change the order by sorting questions!</p>
                                 <div class="row">
                                     <div class="col s6 m6">
                                         <input id="deleteInput" type="text" placeholder="number">
@@ -192,11 +182,16 @@
                                 <div class="row">
 
                                     <div class="row">
+                                        <h3 class="center-align deep-orange-text text-darken-4">Save and Print your
+                                            Trivia Quiz</h3>
+                                        <h4 class="amber-text text-darken-3">Step 3: Name your Quiz!</h4>
+                                        <p class="purple-text text-lighten-2">In order to save your quiz, name your quiz
+                                            and you will be able to retreive it by its name and print!</p>
                                         <div class="col s3">
                                             <input id="pword" type="text" placeholder="Trivia Key"><br>
                                             <a id="next" class="waves-effect waves-light btn center-align">Save Key</a>
                                             <br>
-                                            <p id="lastCheck" style="color: red;"></p>
+                                            <p id="lastCheck" style="color: darkviolet;"></p>
                                         </div>
                                     </div>
 
@@ -210,11 +205,12 @@
     </div>
     </div>
     </div>
-    <footer class="page-footer orange lighten-2">
+    <footer class="page-footer brown lighten-5">
 
         <div class="footer-copyright">
             <div class="container">
-                <h5>Made by <a class="brown-text text-lighten-3">&copy;Ministry of Magic Group</a></h5>
+                <h5 class="yellow-text text-darken-3">Made by <a class="blue-grey-text text-darken-2">&copy;Ministry of
+                        Magic Group</a></h5>
             </div>
         </div>
     </footer>

@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="./CSS/Execute.css">
+    <link rel="stylesheet" href="./CSS/print.css">
     <title>Print Quiz</title>
 </head>
 
-<body class="blue-grey lighten-3">
+<body>
     <nav class="blue-grey lighten-5" role="navigation">
         <div class="nav-wrapper container">
             <a id="logo-container" href="./index.html" class="brand-logo">Trivia Pro</a>
@@ -27,46 +27,79 @@
         </div>
     </nav>
 
-    <div class="container fluid">
-        <div class="row" id="top">
-            <!-- <div class="col s4"></div> -->
-            <div class="col s3">
-                <input id="code" placeholder="code" type="text">
-                <button id="cSubmit">Enter</button><br>
-                <p id="error" class="text-danger"></p>
-                <p id="printOption">Print Options</p>
-                <button id="qSubmit">Questions print</button><br>
-                <button id="aSubmit">Answers print</button><br>
-                <button id="oSubmit">Questions w/o Options print</button><br>
-                <button id="lSubmit">letters print</button><br>
-                <input id="titleVal" placeholder="Title" type="text"><button id="titleButton">Title</button><br>
+    <!-- <div class="container fluid">
+        <div class="row" id="top"> -->
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12">
+                <div id="question-container" class="card lighten-5 z-depth-5">
+                    <div class="card-content amber lighten-5">
+                        <div class="container">
+                            <div class="row">
+                                <h2 class="center-align deep-orange-text text-darken-4">Print your Quiz!</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12">
+                <div id="question-container" class="card lighten-5 z-depth-5">
+                    <div class="card-content amber lighten-5">
+                        <div class="container">
+                            <div class="row">
+                                <h4 class="amber-text text-darken-3">Step 1: Enter Quiz Name </h4>
+                                <p class="purple-text text-lighten-2">Make sure you see your Quiz code in green next to print options</p>
+                                <br>
+                                <div class="col s12 m8 border">
+                                    <input id="code" placeholder="code" type="text">
+                                    <a class="waves-effect waves-light btn" id="cSubmit">Enter</a>
+                                    <br>
+                                    <br>
+                                    <p id="error" class="text-danger"></p>
+                                    <h4 id="printOption" class="amber-text text-darken-3">Step 2: Print Options</h4>
+                                    <br>
+                                    <a class="waves-effect waves-light btn" id="qSubmit">Questions print</a>
+                                    <br>
+                                    <br>
+                                    <a class="waves-effect waves-light btn" id="aSubmit">Answers print</a>
+                                    <br>
+                                    <br>
+                                    <a class="waves-effect waves-light btn" id="oSubmit">Questions w/o Options print</a>
+                                    <br>
+                                    <br>
+                                    <a class="waves-effect waves-light btn" id="lSubmit">letters print</a>
+                                    <br>
+                                    <br>
+                                    <h4 id="printOption" class="amber-text text-darken-3">Step 3: Name your Quiz</h4>
+                                    <input id="titleVal" placeholder="Title" type="text"><a
+                                        class="waves-effect waves-light btn" id="titleButton">Title</a><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col s12">
-                <h1 id="listTitle" class="center-align"></h1>
-                <ol>
+                <h1 class="center-align yellow-text text-darken-3" id="listTitle"></h1>
+                <ol class="yellow-text text-darken-3">
 
                 </ol>
             </div>
         </div>
     </div>
-    <!-- <div class="parallax">
-            <img
-                src="./Images/new-york-city-street-night-lights.jpg"
-                alt="winner-pic"></img>
-            <H1 class="center-align">Print Quiz</H1>
-        </div>
-        <br>
-        <div class="center-align">
-            <a class="waves-effect waves-light btn-large">Click here to Print!</a>
-        </div>
-        <br><br> -->
-    <footer class="page-footer  cyan darken-4">
+    <footer class="page-footer brown lighten-5">
 
         <div class="footer-copyright">
             <div class="container">
-                <h5>Made by <a class="brown-text text-lighten-3">&copy;Ministry of Magic Group</a></h5>
+                <h5 class="yellow-text text-darken-3">Made by <a class="blue-grey-text text-darken-2">&copy;Ministry of
+                        Magic Group</a></h5>
             </div>
         </div>
     </footer>

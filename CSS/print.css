@@ -1,0 +1,30 @@
+.card-body {
+    box-shadow: 0 0 10px 2px;
+  }
+
+  body {
+    background: #00807A;
+  }
+
+  nav ul a {
+    color: #444444;
+  }
+  nav a {
+    color: #26A69A;
+  }
+  nav {
+    margin-bottom: 30px;
+  }
+
+  h2 {
+    text-shadow: 2px 2px 7px black;
+    font: italic small-caps bold 46px cursive;
+    font-weight: 800;
+  }
+  
+  h4 {
+    text-shadow: 2px 2px 4px black;
+    font: italic small-caps bold 28px cursive;
+  }
+
+  
