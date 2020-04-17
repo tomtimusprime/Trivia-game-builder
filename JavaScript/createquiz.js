@@ -11,22 +11,30 @@ $(document).ready(function() {
 $( document ).ready(function() {
     $('.sidenav').sidenav();
     console.log( "ready!" );
+    
+    let questions = localStorage.getItem("questions");
+    questions = JSON.parse(questions);
+    if (questions === null) {
+      questions = [];
+    }
+    for (let i = 0; i < questions.length; i++) {
+      console.log(i);
+      let eleD = $("<div>");
+      let eleQ = $("<p>");
+      eleQ.addClass("selectP");
+      eleQ.attr("id", i);
+      eleQ.html((i + 1) + ") " + questions[i].q + "<br>" + "<br>" + questions[i].o[0] + "<br>" + questions[i].o[1] + "<br>" + questions[i].o[2] + "<br>" + questions[i].o[3]+ "<br>" + "<br>");
+      eleD.append(eleQ);
+      $("#demo").append(eleD);
+    }
 
-let questions = localStorage.getItem("questions");
-questions = JSON.parse(questions);
-if (questions === null) {
-  questions = [];
-}
-for (let i = 0; i < questions.length; i++) {
-  console.log(i);
-  let eleD = $("<div>");
-  let eleQ = $("<p>");
-  eleQ.addClass("selectP");
-  eleQ.attr("id", i);
-  eleQ.html((i + 1) + ") " + questions[i].q + "<br>" + "<br>" + questions[i].o[0] + "<br>" + questions[i].o[1] + "<br>" + questions[i].o[2] + "<br>" + questions[i].o[3]+ "<br>" + "<br>");
-  eleD.append(eleQ);
-  $("#demo").append(eleD);
-}
+    if(questions.length > 0) {
+      let clearButton = $("<a>").attr("class", "waves-effect waves-light btn center-align");
+      clearButton.attr("id", "clearButton");
+      clearButton.text("Clear");
+      $("#demo").append(clearButton);
+    }
+    
 
 $("#apiButton").on("click", function () {
 
@@ -195,6 +203,10 @@ $("#apiButton").on("click", function () {
         eleD.append(eleQ);
         $("#demo").append(eleD);
       }
+      let clearButton = $("<a>").attr("class", "waves-effect waves-light btn center-align");
+      clearButton.attr("id", "clearButton");
+      clearButton.text("Clear");
+      $("#demo").append(clearButton);
 
       // Saving object to localStorage
       let json = JSON.stringify(questions);
@@ -234,6 +246,9 @@ $("#deleteButton").on("click", function () {
       eleD.append(eleQ);
       $("#demo").append(eleD);
     }
+      let clearButton = $("<a>").attr("class", "waves-effect waves-light btn center-align");
+      clearButton.text("Clear");
+      $("#demo").append(clearButton);
   }
 
 })
@@ -268,7 +283,10 @@ $("#sortB").on("click", function () {
       eleD.append(eleQ);
       $("#demo").append(eleD);
     }
-
+    let clearButton = $("<a>").attr("class", "waves-effect waves-light btn center-align");
+    clearButton.attr("id", "clearButton");
+    clearButton.text("Clear");
+    $("#demo").append(clearButton);
   }
 
 
@@ -312,6 +330,10 @@ $("#mButton").on("click", function () {
           eleD.append(eleQ);
           $("#demo").append(eleD);
         }
+        let clearButton = $("<a>").attr("class", "waves-effect waves-light btn center-align");
+        clearButton.attr("id", "clearButton");
+        clearButton.text("Clear");
+        $("#demo").append(clearButton);
       } else {
         $("#multipleError").show();
         $("#multipleError").text("Sorry! No more than 20. Delete to add more.");
@@ -373,6 +395,10 @@ $("#bButton").on("click", function () {
           eleD.append(eleQ);
           $("#demo").append(eleD);
         }
+        let clearButton = $("<a>").attr("class", "waves-effect waves-light btn center-align");
+        clearButton.attr("id", "clearButton");
+        clearButton.text("Clear");
+        $("#demo").append(clearButton);
       } else {
         $("#booleanError").show();
         $("#booleanError").text("Sorry! No more than 20. Delete to add more.");
@@ -436,10 +462,10 @@ $("#next").on("click", function () {
     questions = JSON.parse(questions);
     json = JSON.stringify(questions);
     localStorage.setItem(x, json);
-    window.location.href = "./Print.html";
+    window.location.href = "./print.html";
   } else if (a === 0) {
     $("#lastCheck").show();
-    $("#lastCheck").text("Once you submit, no more edits");
+    $("#lastCheck").text("Once you submit, no more edits. Click one more time to save your quiz.");
     setTimeout(function () {
       $("#lastCheck").hide();
     }, 2000);
@@ -483,5 +509,19 @@ $(document).on("dblclick", ".selectP", function () {
   $("#mOption3").val(questions[choice].o[2]);
   $("#mOption4").val(questions[choice].o[3]);
 });
+
+$(document).on("click", "#clearButton", function () {
+  console.log("clear button");
+  $("#demo").empty();
+  let questions = JSON.parse(localStorage.getItem("questions"));
+  questions = [];
+  let json = JSON.stringify(questions);
+  localStorage.setItem("questions", json);
+
+  
+});
+
+
+
 
 });

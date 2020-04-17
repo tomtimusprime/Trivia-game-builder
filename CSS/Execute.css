@@ -25,6 +25,7 @@
    line-height: 0;
    height: auto;
    color: rgba(255,255,255,.9);
+   background: #00807A;
  }
    .parallax-container .section {
      width: 100%;
@@ -34,6 +35,7 @@
    .parallax-container .section {
      position: absolute;
      top: 40%;
+     
    }
    #index-banner .section {
      top: 10%;

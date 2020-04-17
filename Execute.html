@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="./CSS/Execute.css">
+    <link rel="stylesheet" href="./CSS/execute.css">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
@@ -20,13 +20,15 @@
             <a id="logo-container" href="./index.html" class="brand-logo">Trivia Pro</a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="./index.html">Home</a></li>
-                <li><a href="./create-quiz2.html">Create Quiz</a></li>
-                <li><a href="./Print.html">Print Quiz</a></li>
+                <li><a href="./createquiz.html">Create Quiz</a></li>
+                <li><a href="./print.html">Print Quiz</a></li>
                 <!-- <li id="timer">Time Remaining: </li> -->
             </ul>
 
             <ul id="nav-mobile" class="sidenav">
-                <li><a href="#">Links</a></li>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./createquiz.html">Create Quiz</a></li>
+                <li><a href="./print.html">Print Quiz</a></li>
             </ul>
             <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         </div>
@@ -36,7 +38,7 @@
         <div class="container">
             <div class="row">
                 <div class="col s12 m12">
-                    <div id="question-container" class="card blue-grey lighten-5">
+                    <div id="question-container" class="card blue-grey lighten-5 z-depth-5">
                         <div class="card-content black-text darken-3">
                             <div id="code-div">
                                 <p>Type in a code below to pull up the trivia quiz that you've assigned to it.</p>
@@ -69,10 +71,6 @@
                                         <input class="with-gap" name="how-long" type="radio" value="15" checked />
                                         <span>15 seconds</span>
                                     </label>
-                                    <!-- <label>
-                                    <input class="with-gap" name="how-long" type="radio" value="2" checked />
-                                    <span>2 seconds</span>
-                                  </label> -->
                                 </p>
                                 <p>
                                     <label>
@@ -103,7 +101,7 @@
                             <a id="next-button" class="waves-effect waves-light btn center-align hide" href="#">Next
                                 Question</a>
                             <a id="quit-button" class="waves-effect waves-light btn center-align hide"
-                                href="./create-quiz2.html">Quit</a>
+                                href="./createquiz.html">Quit</a>
                             <a id="reset-button" class="waves-effect waves-light btn center-align hide"
                                 href="#">Reset</a>
                                 
@@ -123,10 +121,8 @@
         </div>
     </footer>
 
-
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="./JavaScript/Execute.js"></script>
+    <script src="./JavaScript/execute.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </body>
