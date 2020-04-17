@@ -28,6 +28,7 @@ Suzy - update the print page with cards and make sure all buttons look like all 
     Add some text to the print page to direct people to the execute page
 
     ****Review: Print Quiz page, step 2, after you enter quiz name, the H2 changes removes Step 2 and adds Quiz name in green.** 
+    ***review the styling if good to go update the execute page styling..for consistency..I'm not sold on the current visual...revew with a new set of eyes tomorrow! 
 
 Everyone - friday - go through testing as much as possible.
 Add whatever we think is best to the presentation
