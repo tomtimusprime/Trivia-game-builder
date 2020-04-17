@@ -72,8 +72,8 @@ a { text-decoration: none; }
 
 .links .quickstart {
   font-family: 'Inconsolata', monospace;
-  background-color:red;
-  color: white;
+  background-color:white;
+  color:#444444;
   padding: 20px;
   display: inline-block;
   margin: 0 auto;
@@ -88,7 +88,7 @@ a { text-decoration: none; }
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
-  background-color: rgba(117, 0, 128, 0.952);
+  background-color: black;
   color: white;
   border: none;
   border-radius: 5px;

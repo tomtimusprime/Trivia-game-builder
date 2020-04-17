@@ -19,21 +19,23 @@
             <a id="logo-container" href="./index.html" class="brand-logo">Trivia Pro</a>
             <ul class="right hide-on-med-and-down">
                 <li class="nav-bar-text"><a href="./index.html">Home</a></li>
-                <li><a href="./create-quiz2.html">Create Quiz</a></li>
-                <li><a href="./Print.html">Print Quiz</a></li>
-                <li><a href="./Execute.html">Execute</a></li>
+                <li><a href="./createquiz.html">Create Quiz</a></li>
+                <li><a href="./print.html">Print Quiz</a></li>
+                <li><a href="./execute.html">Execute Quiz</a></li>
                 <!-- <li id="timer">Time Remaining: </li> -->
             </ul>
 
             <ul id="nav-mobile" class="sidenav">
                 <li><a href="./index.html">Home</a></li>
-                <li><a href="./create-quiz2.html">Create Quiz</a></li>
-                <li><a href="./Print.html">Print Quiz</a></li>
-                <li><a href="./Execute.html">Execute</a></li>
+                <li><a href="./createquiz.html">Create Quiz</a></li>
+                <li><a href="./print.html">Print Quiz</a></li>
+                <li><a href="./execute.html">Execute</a></li>
             </ul>
             <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         </div>
     </nav>
+
+    <div id="spacing"></div>
 
     <div class="container">
         <div class="row">
@@ -66,20 +68,25 @@
 
                                 </p>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12">
+                <div id="question-container" class="card lighten-5 z-depth-5">
+                    <div class="card-content black-text darken-3">
+                        <div class="container">
                             <div class="row">
-                                <div class="col s3">
-                                    <input id="pword" type="text" placeholder="Trivia Key"><br>
-                                    <a id="next" class="waves-effect waves-light btn center-align">Save Key</a>
-                                    <br>
-                                    <p id="lastCheck" style="color: red;"></p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col s4 m4 border" id="form">
+                                <div class="col s12 m6 border" id="form">
                                     <h5 class="center-align">Generate Random Questions</h5>
                                     <select class="browser-default" id="apiNumber">
-                                        <option type="text" placeholder="Number of Questions" Disabled selected># of
-                                            Questions
+                                        <option type="text" placeholder="Number of Questions" Disabled selected>Number of Questions
+                                            
                                         </option>
                                         <option value="1">1</option>
                                         <option value="5">5</option>
@@ -109,7 +116,17 @@
                                     <p id="apiError" style="color: red;"></p>
                                     <a id="apiButton" class="waves-effect waves-light btn center-align">Submit</a>
                                 </div>
-                                <div class="col s4 m4 border">
+                                <div class="col s12 m6 border">
+                                    <h5 class="center-align">Create Your Own True or False</h5>
+                                    <input id="bQuestion" type="text" placeholder="Question">
+                                    <input id="bAnswer" type="text" placeholder="Answer">
+                                    <p id="booleanError" style="color: red;"></p>
+                                    <a id="bButton" class="waves-effect waves-light btn center-align">Submit</a>
+                                    <a id="bClear" class="waves-effect waves-light btn center-align">Clear</a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12 m12 border">
                                     <h5 class="center-align">Create Your Own Multiple Choice</h5>
                                     <input clss="white-input" id="mQuestion" type="text" placeholder="Question">
                                     <input id="mAnswer" type="text" placeholder="Answer">
@@ -120,14 +137,6 @@
                                     <p id="multipleError" style="color: red;"></p>
                                     <a id="mButton" class="waves-effect waves-light btn center-align">Submit</a>
                                     <a id="mClear" class="waves-effect waves-light btn center-align">Clear</a>
-                                </div>
-                                <div class="col s4 m4 border">
-                                    <h5 class="center-align">Create Your Own True or False</h5>
-                                    <input id="bQuestion" type="text" placeholder="Question">
-                                    <input id="bAnswer" type="text" placeholder="Answer">
-                                    <p id="booleanError" style="color: red;"></p>
-                                    <a id="bButton" class="waves-effect waves-light btn center-align">Submit</a>
-                                    <a id="bClear" class="waves-effect waves-light btn center-align">Clear</a>
                                 </div>
                             </div>
 
@@ -148,6 +157,7 @@
                                 <h3 class="center-align">Your newly generated Trivia Quiz will be displayed here:</h3>
                                 <p id="demo"></p>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -180,8 +190,16 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col s12"></div>
-                                    <p id="demo"></p>
+
+                                    <div class="row">
+                                        <div class="col s3">
+                                            <input id="pword" type="text" placeholder="Trivia Key"><br>
+                                            <a id="next" class="waves-effect waves-light btn center-align">Save Key</a>
+                                            <br>
+                                            <p id="lastCheck" style="color: red;"></p>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -191,8 +209,8 @@
         </div>
     </div>
     </div>
-</div>
-    <footer class="page-footer  cyan darken-4">
+    </div>
+    <footer class="page-footer orange lighten-2">
 
         <div class="footer-copyright">
             <div class="container">

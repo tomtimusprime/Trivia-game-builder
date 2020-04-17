@@ -16,3 +16,20 @@ JavaScript, Jquery library, Animate on Scroll (AOS), and Bideo.js
 
 
 
+Tom - work on the createquiz page nav bar
+    Add padding when in mobile mode
+
+Schwyn - put a back button and print button once you select how you want it printed.
+ 
+Suzy - update the print page with cards and make sure all buttons look like all the others
+    change the wording on create quiz page to include steps. So step1 do this...step 2 do this, etc.
+    change the footer color
+    add a little more to the color palette 
+    Add some text to the print page to direct people to the execute page
+
+Everyone - friday - go through testing as much as possible.
+Add whatever we think is best to the presentation
+
+
+
+
