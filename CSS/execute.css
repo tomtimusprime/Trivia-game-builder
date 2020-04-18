@@ -9,9 +9,15 @@
   flex-direction: column;
 }
 
+/* nav {
+  margin-bottom: 25px;
+} */
+
 main {
   flex: 1 0 auto;
-  background-color: #00807A
+  background-color: #00807A;
+  padding-top:50px;
+  padding-bottom:25px;
 }
 
  li  {
