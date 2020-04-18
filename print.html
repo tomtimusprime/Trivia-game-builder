@@ -10,7 +10,7 @@
     <title>Print Quiz</title>
 </head>
 
-<body class="blue-grey lighten-3">
+<body>
     <nav class="blue-grey lighten-5" role="navigation">
         <div class="nav-wrapper container">
             <a id="logo-container" href="./index.html" class="brand-logo">Trivia Pro</a>
@@ -26,37 +26,59 @@
             <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         </div>
     </nav>
-
+<main>
+    <!-- Main Print Card with corresponding functionality -->
     <div class="container fluid">
         <div class="row" id="top">
-            <!-- <div class="col s4"></div> -->
-            <div class="col s3">
-                <input id="code" placeholder="code" type="text">
-                <button id="cSubmit">Enter</button><br>
-                <p id="error" class="text-danger" style="color: red;"></p>
-                <p id="printOption">Print Options</p>
-                <button id="qSubmit">Questions</button><br>
-                <button id="aSubmit">Answers</button><br>
-                <button id="oSubmit">Questions w/o Options</button><br>
-                <button id="lSubmit">letters</button><br>
-                <button id="print">Print</button><br>
-                <input id="titleVal" placeholder="Title" type="text"><button id="titleButton">Title</button><br>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s12">
-                <h1 id="listTitle" class="center-align"></h1>
-                <ol>
+            <div class="col s12 m12">
+                <div id="question-container" class="card lighten-5 z-depth-5">
+                    <div class="card-content black-text darken-3">
+                        <div class="container">
+                            <div id="print-card" class="row">
+                                <div class="col s12 m12">
+                                    <h3 class="center-align">Print Trivia Quiz</h3>
+                                    <br>
+                                    <h4 class="center-align">Enter Trivia Quiz Code and Click Enter</h4>
+                                    <h5 class="center-align">Click the different print options to dispaly quiz below.</h5>
+                                    <input id="code" placeholder="code" type="text">
+                                    <a id="cSubmit" class="waves-effect waves-light btn center-align">Enter</a><br>
+                                    <p id="error" class="text-danger"></p>
+                                    <h5 id="printOption">Print Options</h5>
+                                    <a id="qSubmit" class="waves-effect waves-light btn center-align">Questions</a><br>
+                                    <a id="aSubmit" class="waves-effect waves-light btn center-align">Answers</a><br>
+                                    <a id="oSubmit" class="waves-effect waves-light btn center-align">Questions w/o
+                                        Options</a><br>
+                                    <a id="lSubmit" class="waves-effect waves-light btn center-align">letters</a><br>
+                                    <hr>
+                                    <a id="print" class="right waves-effect waves-light btn center-align">Print</a><br>
+                                    
+                                    <!-- Title Section -->
+                                    <h5>Enter a Title</h5>
+                                    <input id="titleVal" placeholder="Title" type="text"><a id="titleButton"
+                                        class="waves-effect waves-light btn center-align">Title</a><br>
+                                </div>
+                            </div>
+                            <!-- Trivia Quiz Dispalyed Here -->
+                            <div class="row">
+                                <div class="col s12">
+                                    <h1 id="listTitle" class="center-align"></h1>
+                                    <ol>
 
-                </ol>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <footer class="page-footer  cyan darken-4">
+    </main>
 
+    <footer class="page-footer  grey lighten-1">
         <div class="footer-copyright">
             <div class="container">
-                <h5>Made by <a class="brown-text text-lighten-3">&copy;Ministry of Magic Group</a></h5>
+                <h5>Made by <a class="black-text text-lighten-3">&copy;Ministry of Magic Group</a></h5>
             </div>
         </div>
     </footer>

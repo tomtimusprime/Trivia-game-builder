@@ -3,6 +3,16 @@
  nav .brand-logo {
    color: #444;
  }
+ body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+  background-color: #00807A
+}
 
  li  {
     display: block;

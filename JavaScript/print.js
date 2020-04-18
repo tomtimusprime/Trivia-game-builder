@@ -134,12 +134,12 @@ $("#titleButton").on("click", function () {
 
 $("#print").on("click", function(){
     $("nav").hide();
-    $("#top").hide();
+    $("#print-card").hide();
     let print = setTimeout(function () {
         window.print();
     }, 500);
     let bringBack = setTimeout(function () {
-        $("#top").show()
+        $("#print-card").show()
         $("nav").show();
     }, 1000);
 
