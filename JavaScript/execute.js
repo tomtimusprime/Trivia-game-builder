@@ -157,25 +157,25 @@ $(document).ready(function () {
       endGame();
     }
     else {
-      questionElement.text(question.q);
+      questionElement.html(question.q);
       answerElement.removeClass("hide");
       questionTimerFunction();
       for (let i = 0; i < question.o.length; i++) {
         const pTag = $("<p>");
         if (question.o[i] === question.o[0]) {
-          pTag.text("a.) " + question.o[i]);
+          pTag.html("a.) " + question.o[i]);
           answerElement.append(pTag);
         }
         if (question.o[i] === question.o[1]) {
-          pTag.text("b.) " + question.o[i]);
+          pTag.html("b.) " + question.o[i]);
           answerElement.append(pTag);
         }
         if (question.o[i] === question.o[2] && question.o[i].length > 0) {
-          pTag.text("c.) " + question.o[i]);
+          pTag.html("c.) " + question.o[i]);
           answerElement.append(pTag);
         }
         if (question.o[i] === question.o[3] && question.o[i].length > 0) {
-          pTag.text("d.) " + question.o[i]);
+          pTag.html("d.) " + question.o[i]);
           answerElement.append(pTag);
         }
         // pTag.text(question.o[i]);
