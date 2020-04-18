@@ -10,7 +10,6 @@
 $(document).ready(function () {
 
   console.log("ready!");
-  localStorage.removeItem("lastPassword"); //ask schwyn about this.
 
   //=========================
   //Declare the DOM variables
@@ -57,7 +56,7 @@ $(document).ready(function () {
 
 
   function checkLocalStorage(questions) {
-    if (localStorage.length === 0) {
+    if (localStorage.getItem("lastPassword") === null) {
       $("#how-long").addClass("hide");
       startButton.addClass("hide");
       questionContainerElement.removeClass("hide");
@@ -108,9 +107,6 @@ $(document).ready(function () {
       $("#code-success").attr("style", "color: green;");
       $("#code-success").text("Successfully added your code. That quiz has " + numberOfQuestions + " question(s).");
       $("#code-success").hide(10000);
-      // let newP = $("<p>").text("That quiz has " + numberOfQuestions);
-      // codeElement.append(newP);
-      // console.log("That quiz has " + numberOfQuestions);
       reset();
     }
   })
@@ -127,7 +123,6 @@ $(document).ready(function () {
   }
 
   function startGame() {
-    // timer = triviaTimer();
     console.log("game started");
     startButton.addClass("hide");
     quitButton.removeClass("hide");
@@ -178,8 +173,6 @@ $(document).ready(function () {
           pTag.html("d.) " + question.o[i]);
           answerElement.append(pTag);
         }
-        // pTag.text(question.o[i]);
-        // answerElement.append(pTag);
 
       }
 
@@ -226,83 +219,5 @@ $(document).ready(function () {
 });
 
 
-//Done - 1. Get data from local storage - so I need to load Schwynn's version and get that data so I know how to manipulate it.
-//Done - mostly 2. Once I have that in an array of objects, I can then manipulate and generate the question cards.
-//Done - 3. add timer option on the actual execute page.
-//Done - 4. Need to test the overall timer
-//Done - 5. Need to add the ability to get how long they want each question to be in seconds
-//Done - 6. Need to add that timer to each questions
-//8. need to make sure everything is styled correctly across all pages.
-//Done - 9. Need to pull the data of how many questions there are
-//10. fix the quotes issue that Schwyn was talking about
-//** get ABCD to show up in front of questions - ask Ian maybe? */
-//clean up the create quiz page
-//add a button to go to the execute page after the submit button or make the functionality of the submit button include going to the execute page.
-//Add functionality to show how many questions there in each quiz they selected.
-//Get the handling for the start button if they add a code that isn't there and press the start button.
-//fix the navbar on create page
-//update buttons on create page
-//get all the navs mobile friendly
-//review create page and see how we can make it more user friendly
-
-//Make a powerpoint - include what will happen in future updates?
-//Go back through the checklist
-//something is wrong in the dropdown when you try to create the trivia quiz
-//We need to handle if someone puts one self-created question and then tries 20 questions from the drop down - need to make that consistent
-//because there's 4 other question spots they could use.
-//Need to use the GIPHY API
-//Need to use AOS and implement that
-//For future updates - add additional categories
-//Make two different options for the execute - one with multiple choice answers and one without
-
-//To go over with Ian - Animations, get ABCD to show up in front of questions, Done- how to handle when the questions end.
-
-
-//We still need to use Giphy
-
-//Bug concerning the code portion of the create quiz - have to click it twice?
-//Special characters are still not showing up
-//Is it possible to put in the code that you already created in the create quiz page to modify it? If not, can we add that functionality?
-//If you quit the execute page it's a rabit trail to get back
-//But with the nav bar - this is known.
-
-//constructor - it's like classes because Javascript doesn't actually have real classes you can use class syntax as well.
-// function Timer(timeLength) {
-//   this.MAX_TIME = timeLength;
-//   this.time = this.MAX_TIME;
-//   this.start = function () { }
-//   this.interval = ()=> setInterval(this.timer, 1000);
-//   this.timer = function () {
-//     if (this.time < 1) {
-//       this.stop();
-//       currentQuestionIndex++;
-//       this.time = this.MAX_TIME;
-//     }
-//     // nextBtn.text(`Time Remaining: ${this.time}`);
-//     console.log(this.time);
-//     this.time--;
-
-//   }
-//   this.stop = function () {
-//     clearInterval(this.interval);
-//   }
-// }
-
-// var timer2 = new Timer(5);
-
- // function triviaTimer() {
-  //   let timerTextElement = $("#timer");
-  //   let timerId = setInterval(function () {
-  //     if (timerCount < 1) {
-  //       clearInterval(timerId);
-  //       startButton.addClass("hide");
-  //       nextBtn.addClass("hide");
-  //       answerElement.addClass("hide");
-  //       endGame();
-  //     }
-  //     timerTextElement.text(`Time Remaining: ${timerCount}`);
-  //     timerCount--;
-  //   }, 1000);
-  // }
 
 

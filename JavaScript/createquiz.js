@@ -33,7 +33,7 @@ $(document).ready(function () {
     clearButton.text("Clear");
     $("#demo").append(clearButton);
   }
-  $("#number").text("Your newly generated Trivia Quiz. Question counter: ");
+  $("#number").text("Generated Quiz Displayed Here. Question counter: ");
     let numberCount = $("#number").text();
     console.log(numberCount);
     numberCount += questions.length;
@@ -212,7 +212,7 @@ $(document).ready(function () {
         clearButton.attr("id", "clearButton");
         clearButton.text("Clear");
         $("#demo").append(clearButton);
-        $("#number").text("Your newly generated Trivia Quiz. Question counter: ");
+        $("#number").text("Generated Quiz Displayed Here. Question counter: ");
         let numberCount = $("#number").text();
         console.log(numberCount);
         numberCount += questions.length;
@@ -259,7 +259,7 @@ $(document).ready(function () {
       let clearButton = $("<a>").attr("class", "waves-effect waves-light btn center-align");
       clearButton.text("Clear");
       $("#demo").append(clearButton);
-      $("#number").text("Your newly generated Trivia Quiz. Question counter: ");
+      $("#number").text("Generated Quiz Displayed Here. Question counter: ");
       let numberCount = $("#number").text();
       console.log(numberCount);
       numberCount += questions.length;
@@ -302,7 +302,7 @@ $(document).ready(function () {
       clearButton.attr("id", "clearButton");
       clearButton.text("Clear");
       $("#demo").append(clearButton);
-      $("#number").text("Your newly generated Trivia Quiz. Question counter: ");
+      $("#number").text("Generated Quiz Displayed Here. Question counter: ");
       let numberCount = $("#number").text();
       console.log(numberCount);
       numberCount += questions.length;
@@ -354,7 +354,7 @@ $(document).ready(function () {
           clearButton.attr("id", "clearButton");
           clearButton.text("Clear");
           $("#demo").append(clearButton);
-          $("#number").text("Your newly generated Trivia Quiz. Question counter: ");
+          $("#number").text("Generated Quiz Displayed Here. Question counter: ");
           let numberCount = $("#number").text();
           console.log(numberCount);
           numberCount += questions.length;
@@ -424,7 +424,7 @@ $(document).ready(function () {
           clearButton.attr("id", "clearButton");
           clearButton.text("Clear");
           $("#demo").append(clearButton);
-          $("#number").text("Your newly generated Trivia Quiz. Question counter: ");
+          $("#number").text("Generated Quiz Displayed Here. Question counter: ");
           let numberCount = $("#number").text();
           console.log(numberCount);
           numberCount += questions.length;
@@ -547,7 +547,7 @@ $(document).ready(function () {
     questions = [];
     let json = JSON.stringify(questions);
     localStorage.setItem("questions", json);
-    $("#number").text("Your newly generated Trivia Quiz. Question counter: ");
+    $("#number").text("Generated Quiz Displayed Here. Question counter: ");
       let numberCount = $("#number").text();
       console.log(numberCount);
       numberCount += questions.length;
@@ -555,8 +555,5 @@ $(document).ready(function () {
 
 
   });
-
-
-
 
 });
