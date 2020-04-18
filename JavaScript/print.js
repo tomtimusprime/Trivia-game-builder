@@ -13,7 +13,9 @@ $("#cSubmit").on("click", function () {
         $("#printOption").text("Print Options: ");
         $("#error").show()
         $("#error").text("Code not found");
-        $("#error").hide(4000);
+        setTimeout(function(){
+            $("#error").hide();
+            },1500);
     }
 })
 
@@ -30,24 +32,15 @@ $("#qSubmit").on("click", function () {
             let eleLi = $("<li>");
             eleLi.addClass("left-align");
             if (questions[i].o[2] === "") {
-                eleLi.html(liNum + ") " + questions[i].q + "<br>" + "<br>" + "a) " + questions[i].o[0] + "<br>" + "b) " + questions[i].o[1] + "<br>");
+                eleLi.html(questions[i].q + "<br>" + "<br>" + "a) " + questions[i].o[0] + "<br>" + "b) " + questions[i].o[1] + "<br>");
             } else {
-                eleLi.html(liNum + ") " + questions[i].q + "<br>" + "<br>" + "a) " + questions[i].o[0] + "<br>" + "b) " + questions[i].o[1] + "<br>" + "c) " + questions[i].o[2] + "<br>" + "d) " + questions[i].o[3]);
+                eleLi.html(questions[i].q + "<br>" + "<br>" + "a) " + questions[i].o[0] + "<br>" + "b) " + questions[i].o[1] + "<br>" + "c) " + questions[i].o[2] + "<br>" + "d) " + questions[i].o[3]);
             }
             liNum++;
             $("ol").append(eleLi);
             let eleBr = $("<br>")
             $("ol").append(eleBr);
         }
-        $("nav").hide();
-        $("#top").hide();
-        let print = setTimeout(function () {
-            window.print();
-        }, 1000);
-        let bringBack = setTimeout(function () {
-            $("#top").show();
-            $("nav").show();
-        }, 5000);
     }
 
 });
@@ -62,21 +55,12 @@ $("#aSubmit").on("click", function () {
             console.log(i);
             let eleLi = $("<li>");
             eleLi.addClass("left-align");
-            eleLi.html(liNum + ") " + questions[i].a);
+            eleLi.html(questions[i].a);
             liNum++;
             $("ol").append(eleLi);
             let eleBr = $("<br>")
             $("ol").append(eleBr);
         }
-        $("nav").hide();
-        $("#top").hide();
-        let print = setTimeout(function () {
-            // window.print();
-        }, 1000);
-        let bringBack = setTimeout(function () {
-            $("nav").show();
-            $("#top").show();
-        }, 5000);
     }
 
 
@@ -92,21 +76,12 @@ $("#oSubmit").on("click", function () {
             console.log(i);
             let eleLi = $("<li>");
             eleLi.addClass("left-align");
-            eleLi.html(liNum + ") " + questions[i].q);
+            eleLi.html(questions[i].q);
             liNum++;
             $("ol").append(eleLi);
             let eleBr = $("<br>")
             $("ol").append(eleBr);
         }
-        $("nav").hide();
-        $("#top").hide();
-        let print = setTimeout(function () {
-            // window.print();
-        }, 1000);
-        let bringBack = setTimeout(function () {
-            $("#top").show();
-            $("nav").show();
-        }, 5000);
     }
 
 
@@ -140,21 +115,12 @@ $("#lSubmit").on("click", function () {
             console.log(myArray[i]);
             let eleLi = $("<li>");
             eleLi.addClass("left-align");
-            eleLi.html(liNum + ") " + myArray[i]);
+            eleLi.html(myArray[i]);
             liNum++;
             $("ol").append(eleLi);
             let eleBr = $("<br>")
             $("ol").append(eleBr);
         }
-        $("nav").hide();
-        $("#top").hide();
-        let print = setTimeout(function () {
-            // window.print();
-        }, 1000);
-        let bringBack = setTimeout(function () {
-            $("#top").show()
-            $("nav").show();
-        }, 5000);
     }
 
 
@@ -164,4 +130,17 @@ $("#titleButton").on("click", function () {
     let text = $("#titleVal").val();
     console.log(text);
     $("#listTitle").text(text);
+})
+
+$("#print").on("click", function(){
+    $("nav").hide();
+    $("#top").hide();
+    let print = setTimeout(function () {
+        window.print();
+    }, 500);
+    let bringBack = setTimeout(function () {
+        $("#top").show()
+        $("nav").show();
+    }, 1000);
+
 })
