@@ -2,6 +2,10 @@
     box-shadow: 0 0 10px 2px;
   }
 
+.card-content {
+  background-color: #f7ffe0;
+}
+
   body {
     background: #00807A;
   }
@@ -17,14 +21,21 @@
   }
 
   h2 {
-    text-shadow: 2px 2px 7px black;
-    font: italic small-caps bold 46px cursive;
-    font-weight: 800;
+    /* text-shadow: 2px 2px 7px black; */
+    /* font: italic small-caps bold 46px cursive; */
+    font-family: system-ui;
+    font-weight: 600;
+    color: #95389e;
   }
   
   h4 {
-    text-shadow: 2px 2px 4px black;
-    font: italic small-caps bold 28px cursive;
+    /* text-shadow: 2px 2px 4px black; */
+    /* font: italic small-caps bold 28px cursive; */
+    font-family: system-ui;
+    color: #95389e;
   }
 
-  
+  p {
+    font-family: system-ui;
+
+  }
