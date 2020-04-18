@@ -1,3 +1,6 @@
+$('.sidenav').sidenav();
+$('.parallax').parallax();
+
 let questions;
 $("#cSubmit").on("click", function () {
     let code = $("#code").val();
