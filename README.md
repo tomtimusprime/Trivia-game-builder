@@ -1,4 +1,4 @@
-https://tomtimusprime.github.io/Trivia-game-builder/
+Deployed link: https://tomtimusprime.github.io/Trivia-game-builder/
 # Trivia-game-builder - Team Ministry of Magic
 
 ## User Story:
